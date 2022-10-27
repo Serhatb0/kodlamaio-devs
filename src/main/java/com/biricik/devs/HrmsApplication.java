@@ -1,4 +1,4 @@
-package com.biricik.hrms;
+package com.biricik.devs;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
