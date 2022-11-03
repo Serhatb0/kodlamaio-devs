@@ -56,7 +56,7 @@ public class ProgrammingLanguageTechnologieManager implements ProgrammingLanguag
     }
 
     @Override
-    public UpdateProgrammingLanguageTechnologieResponse updateProgrammingLanguage(int id,
+    public UpdateProgrammingLanguageTechnologieResponse updateProgrammingLanguageTechnologies(int id,
             UpdateProgrammingLanguageTechnologieRequest updateProgrammingLanguageRequest) {
 
         GetByIdProgrammingLanguagesResponse getByIdProgrammingLanguagesResponse = this.programmingLanguageService
@@ -79,7 +79,7 @@ public class ProgrammingLanguageTechnologieManager implements ProgrammingLanguag
     }
 
     @Override
-    public void deleteProgrammingLanguage(int id) {
+    public void deleteProgrammingLanguageTechnologie(int id) {
         programmingLanguageTechnologieRepository.deleteById(id);
 
     }

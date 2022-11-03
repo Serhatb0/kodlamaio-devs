@@ -48,13 +48,13 @@ public class ProgrammingLanguageTechnologiesController {
 
     @DeleteMapping("/programming_language_technologies/{id}")
     public String deleteProgrammingLanguageTechnologie(@PathVariable int id) {
-        programmingLanguageTechnologieService.deleteProgrammingLanguage(id);
+        programmingLanguageTechnologieService.deleteProgrammingLanguageTechnologie(id);
         return "Successful";
     }
 
     @PutMapping("/programming_language_technologies/{id}")
     public UpdateProgrammingLanguageTechnologieResponse updateProgrammingLanguageTechnologie(@RequestParam int id, @RequestBody UpdateProgrammingLanguageTechnologieRequest updateProgrammingLanguageTechnologieRequest) {
-       return programmingLanguageTechnologieService.updateProgrammingLanguage(id,updateProgrammingLanguageTechnologieRequest);
+       return programmingLanguageTechnologieService.updateProgrammingLanguageTechnologies(id,updateProgrammingLanguageTechnologieRequest);
     }
 
    
