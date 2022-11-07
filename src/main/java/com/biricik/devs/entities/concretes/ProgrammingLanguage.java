@@ -21,7 +21,7 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @Entity
-@Table(name="programming_languages")
+@Table(name = "programming_languages")
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
@@ -35,23 +35,21 @@ public class ProgrammingLanguage {
     @Column(name = "name")
     private String name;
 
-
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "programmingLanguage")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "programmingLanguage")
     List<ProgrammingLanguageTechnologie> programmingLanguageTechnologies;
 
-
-    
     public ProgrammingLanguage(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
-
+    public ProgrammingLanguage(String name, List<ProgrammingLanguageTechnologie> programmingLanguageTechnologies) {
+        this.name = name;
+        this.programmingLanguageTechnologies = programmingLanguageTechnologies;
+    }
 
     public ProgrammingLanguage(String name) {
         this.name = name;
     }
-
-    
 
 }
