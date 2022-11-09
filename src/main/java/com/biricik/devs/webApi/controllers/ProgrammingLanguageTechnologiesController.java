@@ -19,7 +19,8 @@ import com.biricik.devs.business.requests.ProgrammingLanguageTechnologieRequests
 import com.biricik.devs.business.responses.ProgrammingLanguageTechnologieResponses.CreateProgrammingLanguageTechnologieResponse;
 import com.biricik.devs.business.responses.ProgrammingLanguageTechnologieResponses.GetAllProgrammingLanguagesTechnologieResponse;
 import com.biricik.devs.business.responses.ProgrammingLanguageTechnologieResponses.UpdateProgrammingLanguageTechnologieResponse;
-
+import com.biricik.devs.core.utilities.result.DataResult;
+import com.biricik.devs.core.utilities.result.Result;
 
 @RestController
 @RequestMapping("/api")
@@ -34,29 +35,28 @@ public class ProgrammingLanguageTechnologiesController {
     }
 
     @PostMapping("/programming_language_technologies")
-    public CreateProgrammingLanguageTechnologieResponse addProgrammingLanguageTechnologie(@RequestBody
-            CreateProgrammingLanguageTechnologieRequest createProgrammingLanguageTechnologieRequest) {
+    public DataResult<CreateProgrammingLanguageTechnologieResponse> addProgrammingLanguageTechnologie(
+            @RequestBody CreateProgrammingLanguageTechnologieRequest createProgrammingLanguageTechnologieRequest) {
         return programmingLanguageTechnologieService
                 .addProgrammingLanguageTechnologie(createProgrammingLanguageTechnologieRequest);
     }
 
     @GetMapping("/programming_language_technologies")
-    public List<GetAllProgrammingLanguagesTechnologieResponse> getProgrammingLanguageTechnologies() {
+    public DataResult<List<GetAllProgrammingLanguagesTechnologieResponse>> getProgrammingLanguageTechnologies() {
         return programmingLanguageTechnologieService.getAllProgrammingLanguageTechnologies();
     }
 
-
     @DeleteMapping("/programming_language_technologies/{id}")
-    public String deleteProgrammingLanguageTechnologie(@PathVariable int id) {
-        programmingLanguageTechnologieService.deleteProgrammingLanguageTechnologie(id);
-        return "Successful";
+    public Result deleteProgrammingLanguageTechnologie(@PathVariable int id) {
+        return programmingLanguageTechnologieService.deleteProgrammingLanguageTechnologie(id);
     }
 
     @PutMapping("/programming_language_technologies/{id}")
-    public UpdateProgrammingLanguageTechnologieResponse updateProgrammingLanguageTechnologie(@RequestParam int id, @RequestBody UpdateProgrammingLanguageTechnologieRequest updateProgrammingLanguageTechnologieRequest) {
-       return programmingLanguageTechnologieService.updateProgrammingLanguageTechnologies(id,updateProgrammingLanguageTechnologieRequest);
+    public DataResult<UpdateProgrammingLanguageTechnologieResponse> updateProgrammingLanguageTechnologie(
+            @RequestParam int id,
+            @RequestBody UpdateProgrammingLanguageTechnologieRequest updateProgrammingLanguageTechnologieRequest) {
+        return programmingLanguageTechnologieService.updateProgrammingLanguageTechnologies(id,
+                updateProgrammingLanguageTechnologieRequest);
     }
-
-   
 
 }

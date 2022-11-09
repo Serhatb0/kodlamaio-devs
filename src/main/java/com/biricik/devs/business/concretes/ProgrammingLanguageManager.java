@@ -8,12 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.biricik.devs.business.abstracts.ProgrammingLanguageService;
+import com.biricik.devs.business.constants.Messages;
 import com.biricik.devs.business.requests.ProgrammingLanguageRequests.CreateProgrammingLanguageRequest;
 import com.biricik.devs.business.requests.ProgrammingLanguageRequests.UpdateProgrammingLanguageRequest;
 import com.biricik.devs.business.responses.ProgrammingLanguageResponses.CreateProgrammingLanguageResponse;
 import com.biricik.devs.business.responses.ProgrammingLanguageResponses.GetAllProgrammingLanguagesResponse;
 import com.biricik.devs.business.responses.ProgrammingLanguageResponses.GetByIdProgrammingLanguagesResponse;
 import com.biricik.devs.business.responses.ProgrammingLanguageResponses.UpdateProgrammingLanguageResponse;
+import com.biricik.devs.core.utilities.result.DataResult;
+import com.biricik.devs.core.utilities.result.ErrorDataResult;
+import com.biricik.devs.core.utilities.result.ErrorResult;
+import com.biricik.devs.core.utilities.result.Result;
+import com.biricik.devs.core.utilities.result.SuccessDataResult;
+import com.biricik.devs.core.utilities.result.SuccessResult;
 import com.biricik.devs.dao.abstracts.ProgrammingLanguageRepository;
 import com.biricik.devs.entities.concretes.ProgrammingLanguage;
 
@@ -28,34 +35,45 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
     }
 
     @Override
-    public List<GetAllProgrammingLanguagesResponse> getAllProgrammingLanguage() {
-        return programmingLanguageRepository.findAll().stream()
-                .map(GetAllProgrammingLanguagesResponse::convert).collect(Collectors.toList());
+    public DataResult<List<GetAllProgrammingLanguagesResponse>> getAllProgrammingLanguage() {
+        return new SuccessDataResult<>(programmingLanguageRepository.findAll().stream()
+                .map(GetAllProgrammingLanguagesResponse::convert).collect(Collectors.toList()));
     }
 
     @Override
-    public GetByIdProgrammingLanguagesResponse getByIdProgrammingLanguage(int id) {
+    public DataResult<GetByIdProgrammingLanguagesResponse> getByIdProgrammingLanguage(int id) {
         Optional<ProgrammingLanguage> optionalProgrammingLanguage = programmingLanguageRepository
                 .findById(id);
-        return optionalProgrammingLanguage.map(GetByIdProgrammingLanguagesResponse::convert)
-                .orElse(new GetByIdProgrammingLanguagesResponse());
+
+        if (optionalProgrammingLanguage.isEmpty()) {
+            return new ErrorDataResult<>(Messages.PROGRAMMİNGLANGUAGENOTFOUND);
+        }
+
+        return new SuccessDataResult<>(
+                optionalProgrammingLanguage.map(GetByIdProgrammingLanguagesResponse::convert).get());
     }
 
     @Override
-    public CreateProgrammingLanguageResponse addProgrammingLanguage(
+    public DataResult<CreateProgrammingLanguageResponse> addProgrammingLanguage(
             CreateProgrammingLanguageRequest createProgrammingLanguageRequest) {
 
         ProgrammingLanguage programmingLanguage = programmingLanguageRepository
                 .save(new ProgrammingLanguage(createProgrammingLanguageRequest.name()));
-                
-        return CreateProgrammingLanguageResponse.convert(programmingLanguage);
+
+        return new SuccessDataResult<>(CreateProgrammingLanguageResponse.convert(programmingLanguage),
+                Messages.PROGRAMMİNGLANGUAGEADD);
     }
 
     @Override
-    public UpdateProgrammingLanguageResponse updateProgrammingLanguage(
+    public DataResult<UpdateProgrammingLanguageResponse> updateProgrammingLanguage(
             int id, UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest) {
+
         Optional<ProgrammingLanguage> optionalProgrammingLanguage = programmingLanguageRepository
                 .findById(id);
+
+        if (optionalProgrammingLanguage.isEmpty()) {
+            return new ErrorDataResult<>(Messages.PROGRAMMİNGLANGUAGENOTFOUND);
+        }
 
         optionalProgrammingLanguage.ifPresent(
                 programmingLanguage -> {
@@ -64,14 +82,20 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
                     programmingLanguageRepository.save(programmingLanguage);
                 });
 
-        return optionalProgrammingLanguage.map(UpdateProgrammingLanguageResponse::convert)
-                .orElse(new UpdateProgrammingLanguageResponse());
+        return new SuccessDataResult<>(
+                optionalProgrammingLanguage.map(UpdateProgrammingLanguageResponse::convert).get());
 
     }
 
     @Override
-    public void deleteProgrammingLanguage(int id) {
-        programmingLanguageRepository.deleteById(id);
+    public Result deleteProgrammingLanguage(int id) {
+        Optional<ProgrammingLanguage> programmingLanguage = programmingLanguageRepository.findById(id);
+        if(programmingLanguage.isEmpty()){
+            return new ErrorResult(Messages.PROGRAMMİNGLANGUAGENOTFOUND);
+        }
+        programmingLanguageRepository.delete(programmingLanguage.get());
+        return new SuccessResult(Messages.PROGRAMMİNGLANGUAGEDELETE);
+
     }
 
 }

@@ -8,16 +8,18 @@ import com.biricik.devs.business.responses.ProgrammingLanguageResponses.CreatePr
 import com.biricik.devs.business.responses.ProgrammingLanguageResponses.GetAllProgrammingLanguagesResponse;
 import com.biricik.devs.business.responses.ProgrammingLanguageResponses.GetByIdProgrammingLanguagesResponse;
 import com.biricik.devs.business.responses.ProgrammingLanguageResponses.UpdateProgrammingLanguageResponse;
+import com.biricik.devs.core.utilities.result.DataResult;
+import com.biricik.devs.core.utilities.result.Result;
 
 public interface ProgrammingLanguageService {
-    public List<GetAllProgrammingLanguagesResponse> getAllProgrammingLanguage();
+    public DataResult<List<GetAllProgrammingLanguagesResponse>> getAllProgrammingLanguage();
 
-    public GetByIdProgrammingLanguagesResponse getByIdProgrammingLanguage(int id);
+    public DataResult<GetByIdProgrammingLanguagesResponse> getByIdProgrammingLanguage(int id);
 
-    public CreateProgrammingLanguageResponse addProgrammingLanguage(CreateProgrammingLanguageRequest createProgrammingLanguageRequest);
+    public DataResult<CreateProgrammingLanguageResponse> addProgrammingLanguage(CreateProgrammingLanguageRequest createProgrammingLanguageRequest);
 
-    public UpdateProgrammingLanguageResponse updateProgrammingLanguage(int id,UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest);
+    public DataResult<UpdateProgrammingLanguageResponse> updateProgrammingLanguage(int id,UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest);
 
-    public void deleteProgrammingLanguage(int id);
+    public Result deleteProgrammingLanguage(int id);
 
 }

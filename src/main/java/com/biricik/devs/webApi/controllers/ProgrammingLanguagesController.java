@@ -20,7 +20,8 @@ import com.biricik.devs.business.responses.ProgrammingLanguageResponses.CreatePr
 import com.biricik.devs.business.responses.ProgrammingLanguageResponses.GetAllProgrammingLanguagesResponse;
 import com.biricik.devs.business.responses.ProgrammingLanguageResponses.GetByIdProgrammingLanguagesResponse;
 import com.biricik.devs.business.responses.ProgrammingLanguageResponses.UpdateProgrammingLanguageResponse;
-
+import com.biricik.devs.core.utilities.result.DataResult;
+import com.biricik.devs.core.utilities.result.Result;
 
 @RestController
 @RequestMapping("/api")
@@ -34,28 +35,29 @@ public class ProgrammingLanguagesController {
     }
 
     @GetMapping("/programming-languages")
-    public List<GetAllProgrammingLanguagesResponse> getAllProgrammingLanguage() {
+    public DataResult<List<GetAllProgrammingLanguagesResponse>> getAllProgrammingLanguage() {
         return programmingLanguageService.getAllProgrammingLanguage();
     }
 
     @GetMapping("/programming-languages/{id}")
-    public GetByIdProgrammingLanguagesResponse getByIdProgrammingLanguage(@PathVariable int id) {
+    public DataResult<GetByIdProgrammingLanguagesResponse> getByIdProgrammingLanguage(@PathVariable int id) {
         return programmingLanguageService.getByIdProgrammingLanguage(id);
     }
 
     @DeleteMapping("/programming-languages/{id}")
-    public String deleteProgrammingLanguage(@PathVariable int id) {
-        programmingLanguageService.deleteProgrammingLanguage(id);
-        return "Successful";
+    public Result deleteProgrammingLanguage(@PathVariable int id) {
+        return programmingLanguageService.deleteProgrammingLanguage(id);
     }
 
     @PutMapping("/programming-languages/{id}")
-    public UpdateProgrammingLanguageResponse updateProgrammingLanguage(@RequestParam int id, @RequestBody UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest) {
-       return programmingLanguageService.updateProgrammingLanguage(id,updateProgrammingLanguageRequest);
+    public DataResult<UpdateProgrammingLanguageResponse> updateProgrammingLanguage(@RequestParam int id,
+            @RequestBody UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest) {
+        return programmingLanguageService.updateProgrammingLanguage(id, updateProgrammingLanguageRequest);
     }
 
     @PostMapping("/programming-languages")
-    public CreateProgrammingLanguageResponse addProgrammingLanguage(@RequestBody CreateProgrammingLanguageRequest createProgrammingLanguageRequest) {
+    public DataResult<CreateProgrammingLanguageResponse> addProgrammingLanguage(
+            @RequestBody CreateProgrammingLanguageRequest createProgrammingLanguageRequest) {
         return programmingLanguageService.addProgrammingLanguage(createProgrammingLanguageRequest);
     }
 

@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.biricik.devs.dao.abstracts.ProgrammingLanguageRepository;
 import com.biricik.devs.entities.concretes.ProgrammingLanguage;
