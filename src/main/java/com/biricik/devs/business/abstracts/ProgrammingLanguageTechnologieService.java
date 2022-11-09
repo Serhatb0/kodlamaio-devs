@@ -7,20 +7,19 @@ import com.biricik.devs.business.requests.ProgrammingLanguageTechnologieRequests
 import com.biricik.devs.business.responses.ProgrammingLanguageTechnologieResponses.CreateProgrammingLanguageTechnologieResponse;
 import com.biricik.devs.business.responses.ProgrammingLanguageTechnologieResponses.GetAllProgrammingLanguagesTechnologieResponse;
 import com.biricik.devs.business.responses.ProgrammingLanguageTechnologieResponses.UpdateProgrammingLanguageTechnologieResponse;
+import com.biricik.devs.core.utilities.result.DataResult;
+import com.biricik.devs.core.utilities.result.Result;
 
 public interface ProgrammingLanguageTechnologieService {
 
+    public DataResult<CreateProgrammingLanguageTechnologieResponse> addProgrammingLanguageTechnologie(
+            CreateProgrammingLanguageTechnologieRequest createProgrammingLanguageRequest);
 
-    public CreateProgrammingLanguageTechnologieResponse addProgrammingLanguageTechnologie(CreateProgrammingLanguageTechnologieRequest createProgrammingLanguageRequest);
-    
-    
-    public List<GetAllProgrammingLanguagesTechnologieResponse> getAllProgrammingLanguageTechnologies();
+    public DataResult<List<GetAllProgrammingLanguagesTechnologieResponse>> getAllProgrammingLanguageTechnologies();
 
+    public DataResult<UpdateProgrammingLanguageTechnologieResponse> updateProgrammingLanguageTechnologies(int id,
+            UpdateProgrammingLanguageTechnologieRequest updateProgrammingLanguageRequest);
 
-    public UpdateProgrammingLanguageTechnologieResponse updateProgrammingLanguageTechnologies(int id,UpdateProgrammingLanguageTechnologieRequest updateProgrammingLanguageRequest);
-
-    public void deleteProgrammingLanguageTechnologie(int id);
-
-
+    public Result deleteProgrammingLanguageTechnologie(int id);
 
 }

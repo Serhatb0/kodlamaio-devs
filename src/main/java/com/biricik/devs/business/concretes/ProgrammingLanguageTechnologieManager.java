@@ -9,12 +9,19 @@ import org.springframework.stereotype.Service;
 
 import com.biricik.devs.business.abstracts.ProgrammingLanguageService;
 import com.biricik.devs.business.abstracts.ProgrammingLanguageTechnologieService;
+import com.biricik.devs.business.constants.Messages;
 import com.biricik.devs.business.requests.ProgrammingLanguageTechnologieRequests.CreateProgrammingLanguageTechnologieRequest;
 import com.biricik.devs.business.requests.ProgrammingLanguageTechnologieRequests.UpdateProgrammingLanguageTechnologieRequest;
 import com.biricik.devs.business.responses.ProgrammingLanguageResponses.GetByIdProgrammingLanguagesResponse;
 import com.biricik.devs.business.responses.ProgrammingLanguageTechnologieResponses.CreateProgrammingLanguageTechnologieResponse;
 import com.biricik.devs.business.responses.ProgrammingLanguageTechnologieResponses.GetAllProgrammingLanguagesTechnologieResponse;
 import com.biricik.devs.business.responses.ProgrammingLanguageTechnologieResponses.UpdateProgrammingLanguageTechnologieResponse;
+import com.biricik.devs.core.utilities.result.DataResult;
+import com.biricik.devs.core.utilities.result.ErrorDataResult;
+import com.biricik.devs.core.utilities.result.ErrorResult;
+import com.biricik.devs.core.utilities.result.Result;
+import com.biricik.devs.core.utilities.result.SuccessDataResult;
+import com.biricik.devs.core.utilities.result.SuccessResult;
 import com.biricik.devs.dao.abstracts.ProgrammingLanguageTechnologieRepository;
 import com.biricik.devs.entities.concretes.ProgrammingLanguage;
 import com.biricik.devs.entities.concretes.ProgrammingLanguageTechnologie;
@@ -22,66 +29,88 @@ import com.biricik.devs.entities.concretes.ProgrammingLanguageTechnologie;
 @Service
 public class ProgrammingLanguageTechnologieManager implements ProgrammingLanguageTechnologieService {
 
-    private final ProgrammingLanguageTechnologieRepository programmingLanguageTechnologieRepository;
-    private final ProgrammingLanguageService programmingLanguageService;
+        private final ProgrammingLanguageTechnologieRepository programmingLanguageTechnologieRepository;
+        private final ProgrammingLanguageService programmingLanguageService;
 
-    @Autowired
-    public ProgrammingLanguageTechnologieManager(
-            ProgrammingLanguageTechnologieRepository programmingLanguageTechnologieRepository,
-            ProgrammingLanguageService programmingLanguageService) {
-        this.programmingLanguageTechnologieRepository = programmingLanguageTechnologieRepository;
-        this.programmingLanguageService = programmingLanguageService;
-    }
+        @Autowired
+        public ProgrammingLanguageTechnologieManager(
+                        ProgrammingLanguageTechnologieRepository programmingLanguageTechnologieRepository,
+                        ProgrammingLanguageService programmingLanguageService) {
+                this.programmingLanguageTechnologieRepository = programmingLanguageTechnologieRepository;
+                this.programmingLanguageService = programmingLanguageService;
+        }
 
-    @Override
-    public CreateProgrammingLanguageTechnologieResponse addProgrammingLanguageTechnologie(
-            CreateProgrammingLanguageTechnologieRequest createProgrammingLanguageRequest) {
+        @Override
+        public DataResult<CreateProgrammingLanguageTechnologieResponse> addProgrammingLanguageTechnologie(
+                        CreateProgrammingLanguageTechnologieRequest createProgrammingLanguageRequest) {
 
-        GetByIdProgrammingLanguagesResponse getByIdProgrammingLanguagesResponse = this.programmingLanguageService
-                .getByIdProgrammingLanguage(createProgrammingLanguageRequest.programmingLanguageId());
-                
-        ProgrammingLanguage programmingLanguage = new ProgrammingLanguage(getByIdProgrammingLanguagesResponse.id(),
-                getByIdProgrammingLanguagesResponse.name());
+                GetByIdProgrammingLanguagesResponse getByIdProgrammingLanguagesResponse = this.programmingLanguageService
+                                .getByIdProgrammingLanguage(createProgrammingLanguageRequest.programmingLanguageId())
+                                .getData();
 
-        ProgrammingLanguageTechnologie programmingLanguageTechnologie = this.programmingLanguageTechnologieRepository
-                .save(new ProgrammingLanguageTechnologie(createProgrammingLanguageRequest.name(), programmingLanguage));
+                ProgrammingLanguage programmingLanguage = new ProgrammingLanguage(
+                                getByIdProgrammingLanguagesResponse.id(),
+                                getByIdProgrammingLanguagesResponse.name());
 
-        return CreateProgrammingLanguageTechnologieResponse.convert(programmingLanguageTechnologie);
-    }
+                ProgrammingLanguageTechnologie programmingLanguageTechnologie = this.programmingLanguageTechnologieRepository
+                                .save(new ProgrammingLanguageTechnologie(createProgrammingLanguageRequest.name(),
+                                                programmingLanguage));
 
-    @Override
-    public List<GetAllProgrammingLanguagesTechnologieResponse> getAllProgrammingLanguageTechnologies() {
-        return programmingLanguageTechnologieRepository.findAll().stream()
-                .map(GetAllProgrammingLanguagesTechnologieResponse::convert).collect(Collectors.toList());
-    }
+                return new SuccessDataResult<>(
+                                CreateProgrammingLanguageTechnologieResponse.convert(programmingLanguageTechnologie),
+                                Messages.PROGRAMMİNGLANGUAGETECHNOLOGIEADD);
+        }
 
-    @Override
-    public UpdateProgrammingLanguageTechnologieResponse updateProgrammingLanguageTechnologies(int id,
-            UpdateProgrammingLanguageTechnologieRequest updateProgrammingLanguageRequest) {
+        @Override
+        public DataResult<List<GetAllProgrammingLanguagesTechnologieResponse>> getAllProgrammingLanguageTechnologies() {
+                return new SuccessDataResult<>(programmingLanguageTechnologieRepository.findAll().stream()
+                                .map(GetAllProgrammingLanguagesTechnologieResponse::convert)
+                                .collect(Collectors.toList()));
+        }
 
-        GetByIdProgrammingLanguagesResponse getByIdProgrammingLanguagesResponse = this.programmingLanguageService
-                .getByIdProgrammingLanguage(updateProgrammingLanguageRequest.programmingLanguageId());
-        ProgrammingLanguage programmingLanguage = new ProgrammingLanguage(getByIdProgrammingLanguagesResponse.id(),
-                getByIdProgrammingLanguagesResponse.name());
+        @Override
+        public DataResult<UpdateProgrammingLanguageTechnologieResponse> updateProgrammingLanguageTechnologies(int id,
+                        UpdateProgrammingLanguageTechnologieRequest updateProgrammingLanguageRequest) {
 
-        Optional<ProgrammingLanguageTechnologie> optionalProgrammingLanguageTechnologie = programmingLanguageTechnologieRepository
-                .findById(id);
+                GetByIdProgrammingLanguagesResponse getByIdProgrammingLanguagesResponse = this.programmingLanguageService
+                                .getByIdProgrammingLanguage(updateProgrammingLanguageRequest.programmingLanguageId())
+                                .getData();
 
-        optionalProgrammingLanguageTechnologie.ifPresent(programmingLanguageTechnologie -> {
-            programmingLanguageTechnologie.setId(id);
-            programmingLanguageTechnologie.setName(updateProgrammingLanguageRequest.name());
-            programmingLanguageTechnologie.setProgrammingLanguage(programmingLanguage);
-            programmingLanguageTechnologieRepository.save(programmingLanguageTechnologie);
-        });
+                ProgrammingLanguage programmingLanguage = new ProgrammingLanguage(
+                                getByIdProgrammingLanguagesResponse.id(),
+                                getByIdProgrammingLanguagesResponse.name());
 
-        return optionalProgrammingLanguageTechnologie.map(UpdateProgrammingLanguageTechnologieResponse::convert)
-                .orElse(new UpdateProgrammingLanguageTechnologieResponse());
-    }
+                Optional<ProgrammingLanguageTechnologie> optionalProgrammingLanguageTechnologie = programmingLanguageTechnologieRepository
+                                .findById(id);
 
-    @Override
-    public void deleteProgrammingLanguageTechnologie(int id) {
-        programmingLanguageTechnologieRepository.deleteById(id);
+                if (optionalProgrammingLanguageTechnologie.isEmpty()) {
+                        return new ErrorDataResult<>(Messages.PROGRAMMİNGLANGUAGETECHNOLOGIENOTFOUND);
+                }
 
-    }
+                optionalProgrammingLanguageTechnologie.ifPresent(programmingLanguageTechnologie -> {
+                        programmingLanguageTechnologie.setId(id);
+                        programmingLanguageTechnologie.setName(updateProgrammingLanguageRequest.name());
+                        programmingLanguageTechnologie.setProgrammingLanguage(programmingLanguage);
+                        programmingLanguageTechnologieRepository.save(programmingLanguageTechnologie);
+                });
+
+                return new SuccessDataResult<>(optionalProgrammingLanguageTechnologie
+                                .map(UpdateProgrammingLanguageTechnologieResponse::convert).get());
+        }
+
+        @Override
+        public Result deleteProgrammingLanguageTechnologie(int id) {
+                Optional<ProgrammingLanguageTechnologie> programmingLanguageTechnologie = programmingLanguageTechnologieRepository
+                                .findById(id);
+
+                if (programmingLanguageTechnologie.isEmpty()) {
+                        return new ErrorResult(Messages.PROGRAMMİNGLANGUAGETECHNOLOGIENOTFOUND);
+                }
+
+                programmingLanguageTechnologieRepository.delete(programmingLanguageTechnologie.get());
+
+                return new SuccessResult(Messages.PROGRAMMİNGLANGUAGETECHNOLOGIEDELETE);
+
+        }
 
 }
