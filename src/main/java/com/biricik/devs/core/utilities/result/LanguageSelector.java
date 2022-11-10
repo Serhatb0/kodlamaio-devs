@@ -4,7 +4,6 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import com.biricik.devs.core.constants.Languages;
@@ -24,7 +23,7 @@ public class LanguageSelector {
     private static HttpServletRequest request;
 
     public LanguageSelector(LanguageRepository languageRepository, WordRepository wordRepository,
-            TranslationRepository translationRepository, Environment environment, HttpServletRequest request) {
+            TranslationRepository translationRepository, HttpServletRequest request) {
 
         LanguageSelector.languageRepository = languageRepository;
         LanguageSelector.wordRepository = wordRepository;
