@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+
 import lombok.*;
 
 @Data
@@ -14,14 +15,15 @@ import lombok.*;
 @EqualsAndHashCode
 @ToString
 public class Word {
-    
 
-    @Id
+
+
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
 
-	@Column(name = "key")
+	@Column(name = "`key`")
 	private String key;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "word")
@@ -31,5 +33,4 @@ public class Word {
 		this.key = key;
 	}
 
-	
 }
