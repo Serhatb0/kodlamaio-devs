@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import com.biricik.devs.TestSupport;
 import com.biricik.devs.dao.abstracts.ProgrammingLanguageRepository;
 import com.biricik.devs.entities.concretes.ProgrammingLanguage;
 import com.biricik.devs.entities.concretes.ProgrammingLanguageTechnologie;
@@ -18,7 +19,7 @@ import java.util.Optional;
 
 @DataJpaTest
 // @Transactional(propagation = Propagation.NOT_SUPPORTED)
-public class ProgrammingLanguageRepositoryTest {
+public class ProgrammingLanguageRepositoryTest extends TestSupport {
 
     @Autowired
     private ProgrammingLanguageRepository programmingLanguageRepository;
@@ -40,12 +41,10 @@ public class ProgrammingLanguageRepositoryTest {
         void itShouldCheckWhenProgrammingLanguageFindByName() {
 
             ProgrammingLanguage programmingLanguage = programmingLanguageRepository
-                    .save(new ProgrammingLanguage("Java"));
+                    .save(generateProgrammingLanguage());
 
-            ProgrammingLanguageTechnologie programmingLanguageTechnologie = new ProgrammingLanguageTechnologie(
-                    "Spring", programmingLanguage);
-            ProgrammingLanguageTechnologie programmingLanguageTechnologie2 = new ProgrammingLanguageTechnologie(
-                    "Hibernate", programmingLanguage);
+            ProgrammingLanguageTechnologie programmingLanguageTechnologie = generateProgrammingLanguageTechnologie();
+            ProgrammingLanguageTechnologie programmingLanguageTechnologie2 = generateProgrammingLanguageTechnologie();
 
             List<ProgrammingLanguageTechnologie> programmingLanguageTechnologies = new ArrayList<>();
             programmingLanguageTechnologies.add(programmingLanguageTechnologie);
@@ -73,7 +72,7 @@ public class ProgrammingLanguageRepositoryTest {
         void itShouldCheckWhenProgrammingLanguageExistsByName() {
             String name = "Java";
 
-            ProgrammingLanguage programmingLanguage = new ProgrammingLanguage(name);
+            ProgrammingLanguage programmingLanguage = generateProgrammingLanguage();
 
             programmingLanguageRepository.save(programmingLanguage);
 

@@ -7,12 +7,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import com.biricik.devs.TestSupport;
 import com.biricik.devs.dao.abstracts.WordRepository;
 import com.biricik.devs.entities.concretes.Word;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @DataJpaTest
-public class WordRepositoryTest {
+public class WordRepositoryTest extends TestSupport {
 
     @Autowired
     private WordRepository wordRepository;
@@ -23,7 +24,7 @@ public class WordRepositoryTest {
         @Test
         public void itShouldCheckWhenWordFindByWordKey() {
 
-            Word word = wordRepository.save(new Word("programming.language.not.found"));
+            Word word = wordRepository.save(generateWord());
 
             Optional<Word> optionalWord = wordRepository.findWordByKey("programming.language.not.found");
 
@@ -31,6 +32,7 @@ public class WordRepositoryTest {
             assertThat(optionalWord.get()).isEqualTo(word);
             assertThat(optionalWord.get().getKey()).isEqualTo(word.getKey());
             assertThat(optionalWord.get().getId()).isEqualTo(word.getId());
+            assertThat(optionalWord.get().getTranslations()).isNull();
 
         }
 
@@ -48,7 +50,7 @@ public class WordRepositoryTest {
         public void itShouldCheckWhenWordExistsByKey() {
             String key = "programming.language.not.found";
 
-            wordRepository.save(new Word(key));
+            wordRepository.save(generateWord());
 
             boolean expected = wordRepository.existsByKey(key);
 
