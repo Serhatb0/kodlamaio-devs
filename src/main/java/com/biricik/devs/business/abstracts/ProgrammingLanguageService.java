@@ -16,9 +16,11 @@ public interface ProgrammingLanguageService {
 
     public DataResult<GetByIdProgrammingLanguagesResponse> getByIdProgrammingLanguage(int id);
 
-    public DataResult<CreateProgrammingLanguageResponse> addProgrammingLanguage(CreateProgrammingLanguageRequest createProgrammingLanguageRequest);
+    public DataResult<CreateProgrammingLanguageResponse> addProgrammingLanguage(
+            CreateProgrammingLanguageRequest createProgrammingLanguageRequest);
 
-    public DataResult<UpdateProgrammingLanguageResponse> updateProgrammingLanguage(int id,UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest);
+    public DataResult<UpdateProgrammingLanguageResponse> updateProgrammingLanguage(int id,
+            UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest);
 
     public Result deleteProgrammingLanguage(int id);
 

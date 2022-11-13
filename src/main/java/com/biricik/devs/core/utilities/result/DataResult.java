@@ -1,6 +1,7 @@
 package com.biricik.devs.core.utilities.result;
 
 
+
 public class DataResult<T> extends Result {
     
     private T data;

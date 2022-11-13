@@ -1,5 +1,6 @@
 package com.biricik.devs.business.responses.ProgrammingLanguageResponses;
 
+
 import com.biricik.devs.entities.concretes.ProgrammingLanguage;
 
 public record CreateProgrammingLanguageResponse(int id ,String name) {
@@ -8,3 +9,4 @@ public record CreateProgrammingLanguageResponse(int id ,String name) {
         return new CreateProgrammingLanguageResponse(programmingLanguage.getId(), programmingLanguage.getName());
     }
 }
+
