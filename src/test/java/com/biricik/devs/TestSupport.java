@@ -1,5 +1,13 @@
 package com.biricik.devs;
 
+import java.util.Arrays;
+
+import com.biricik.devs.business.requests.ProgrammingLanguageRequests.CreateProgrammingLanguageRequest;
+import com.biricik.devs.business.requests.ProgrammingLanguageRequests.UpdateProgrammingLanguageRequest;
+import com.biricik.devs.business.responses.ProgrammingLanguageResponses.CreateProgrammingLanguageResponse;
+import com.biricik.devs.business.responses.ProgrammingLanguageResponses.GetAllProgrammingLanguagesResponse;
+import com.biricik.devs.business.responses.ProgrammingLanguageResponses.GetByIdProgrammingLanguagesResponse;
+import com.biricik.devs.business.responses.ProgrammingLanguageResponses.UpdateProgrammingLanguageResponse;
 import com.biricik.devs.entities.concretes.Language;
 import com.biricik.devs.entities.concretes.ProgrammingLanguage;
 import com.biricik.devs.entities.concretes.ProgrammingLanguageTechnologie;
@@ -13,7 +21,7 @@ public class TestSupport {
     }
 
     public ProgrammingLanguage generateProgrammingLanguage() {
-        return new ProgrammingLanguage("Java");
+        return new ProgrammingLanguage(0, "Java");
     }
 
     public ProgrammingLanguageTechnologie generateProgrammingLanguageTechnologie() {
@@ -27,6 +35,31 @@ public class TestSupport {
 
     public Translation generateTranslation(Word word, Language language) {
         return new Translation(0, "Programming Language Not found", word, language);
+    }
+
+    public CreateProgrammingLanguageRequest generateCreateProgrammingLanguageRequest() {
+        return new CreateProgrammingLanguageRequest(generateProgrammingLanguage().getName());
+    }
+
+    public CreateProgrammingLanguageResponse generateCreateProgrammingLanguageResponse() {
+        return CreateProgrammingLanguageResponse.convert(generateProgrammingLanguage());
+    }
+
+    public GetByIdProgrammingLanguagesResponse generateGetByIdProgrammingLanguagesResponse() {
+        return GetByIdProgrammingLanguagesResponse.convert(generateProgrammingLanguage());
+    }
+
+    public GetAllProgrammingLanguagesResponse generateGetAllProgrammingLanguagesResponse() {
+        return GetAllProgrammingLanguagesResponse
+                .convert(new ProgrammingLanguage(0, "Java", Arrays.asList(generateProgrammingLanguageTechnologie())));
+    }
+
+    public UpdateProgrammingLanguageRequest generateUpdateProgrammingLanguageRequest(){
+        return new UpdateProgrammingLanguageRequest(generateProgrammingLanguage().getName());
+    }
+
+    public UpdateProgrammingLanguageResponse generateUpdateProgrammingLanguageResponse(){
+        return UpdateProgrammingLanguageResponse.convert(generateProgrammingLanguage());
     }
 
 }

@@ -50,18 +50,23 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
         }
 
         return new SuccessDataResult<>(
-                optionalProgrammingLanguage.map(GetByIdProgrammingLanguagesResponse::convert).get());
+            optionalProgrammingLanguage.map(GetByIdProgrammingLanguagesResponse::convert).get());
     }
 
     @Override
-    public DataResult<CreateProgrammingLanguageResponse> addProgrammingLanguage(
+    public  DataResult<CreateProgrammingLanguageResponse> addProgrammingLanguage(
             CreateProgrammingLanguageRequest createProgrammingLanguageRequest) {
 
-        ProgrammingLanguage programmingLanguage = programmingLanguageRepository
-                .save(new ProgrammingLanguage(createProgrammingLanguageRequest.name()));
+        ProgrammingLanguage program = new ProgrammingLanguage(createProgrammingLanguageRequest.name());
 
-        return new SuccessDataResult<>(CreateProgrammingLanguageResponse.convert(programmingLanguage),
-                Messages.PROGRAMMİNGLANGUAGEADD);
+        ProgrammingLanguage programmingLanguage = programmingLanguageRepository
+                .save(program);
+
+        return new
+        SuccessDataResult<>(CreateProgrammingLanguageResponse.convert(programmingLanguage),
+        Messages.PROGRAMMİNGLANGUAGEADD);
+            
+        
     }
 
     @Override
@@ -83,14 +88,14 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
                 });
 
         return new SuccessDataResult<>(
-                optionalProgrammingLanguage.map(UpdateProgrammingLanguageResponse::convert).get());
+                optionalProgrammingLanguage.map(UpdateProgrammingLanguageResponse::convert).get(),Messages.PROGRAMMİNGLANGUAGEUPDATE);
 
     }
 
     @Override
     public Result deleteProgrammingLanguage(int id) {
         Optional<ProgrammingLanguage> programmingLanguage = programmingLanguageRepository.findById(id);
-        if(programmingLanguage.isEmpty()){
+        if (programmingLanguage.isEmpty()) {
             return new ErrorResult(Messages.PROGRAMMİNGLANGUAGENOTFOUND);
         }
         programmingLanguageRepository.delete(programmingLanguage.get());

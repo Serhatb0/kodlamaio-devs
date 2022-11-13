@@ -29,17 +29,17 @@ public class ProgrammingLanguageTechnologie {
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name ="programming_language_id")
+    @JoinColumn(name = "programming_language_id")
     private ProgrammingLanguage programmingLanguage;
 
     public ProgrammingLanguageTechnologie(String name, ProgrammingLanguage programmingLanguage) {
         this.name = name;
         this.programmingLanguage = programmingLanguage;
     }
-    
 
-    
-
+    public ProgrammingLanguageTechnologie(String name) {
+        this.name = name;
+    }
 
     
 

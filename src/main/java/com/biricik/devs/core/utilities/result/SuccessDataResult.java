@@ -1,5 +1,6 @@
 package com.biricik.devs.core.utilities.result;
 
+
 public class SuccessDataResult<T> extends DataResult<T> {
 
     public SuccessDataResult(T data, String message) {
