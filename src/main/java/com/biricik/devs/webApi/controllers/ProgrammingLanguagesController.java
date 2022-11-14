@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.biricik.devs.business.abstracts.ProgrammingLanguageService;
@@ -50,7 +49,7 @@ public class ProgrammingLanguagesController {
     }
 
     @PutMapping("/programming-languages/{id}")
-    public DataResult<UpdateProgrammingLanguageResponse> updateProgrammingLanguage(@RequestParam int id,
+    public DataResult<UpdateProgrammingLanguageResponse> updateProgrammingLanguage(@PathVariable int id,
             @RequestBody UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest) {
         return programmingLanguageService.updateProgrammingLanguage(id, updateProgrammingLanguageRequest);
     }

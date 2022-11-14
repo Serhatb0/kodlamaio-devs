@@ -13,8 +13,14 @@ import com.biricik.devs.entities.concretes.ProgrammingLanguage;
 import com.biricik.devs.entities.concretes.ProgrammingLanguageTechnologie;
 import com.biricik.devs.entities.concretes.Translation;
 import com.biricik.devs.entities.concretes.Word;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class TestSupport {
+
+	private static final ObjectMapper ob = new ObjectMapper();
+
+
 
     public Word generateWord() {
         return new Word("programming.language.not.found");
@@ -62,4 +68,13 @@ public class TestSupport {
         return UpdateProgrammingLanguageResponse.convert(generateProgrammingLanguage());
     }
 
+    public void printJSON(Object object) {
+		String result;
+		try {
+			result = ob.writerWithDefaultPrettyPrinter().writeValueAsString(object);
+			System.out.println(result);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+	}
 }
