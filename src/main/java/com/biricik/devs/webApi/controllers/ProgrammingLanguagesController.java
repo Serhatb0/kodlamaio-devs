@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.biricik.devs.annotation.LogExecutionTime;
 import com.biricik.devs.business.abstracts.ProgrammingLanguageService;
 import com.biricik.devs.business.requests.ProgrammingLanguageRequests.CreateProgrammingLanguageRequest;
 import com.biricik.devs.business.requests.ProgrammingLanguageRequests.UpdateProgrammingLanguageRequest;
@@ -38,6 +39,7 @@ public class ProgrammingLanguagesController {
         return programmingLanguageService.getAllProgrammingLanguage();
     }
 
+    @LogExecutionTime
     @GetMapping("/programming-languages/{id}")
     public DataResult<GetByIdProgrammingLanguagesResponse> getByIdProgrammingLanguage(@PathVariable int id) {
         return programmingLanguageService.getByIdProgrammingLanguage(id);

@@ -75,7 +75,6 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 
         Optional<ProgrammingLanguage> optionalProgrammingLanguage = programmingLanguageRepository
                 .findById(id);
-
         if (optionalProgrammingLanguage.isEmpty()) {
             return new ErrorDataResult<>(Messages.PROGRAMMİNGLANGUAGENOTFOUND);
         }

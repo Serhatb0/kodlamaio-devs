@@ -29,10 +29,10 @@ public class BootstrapLanguageData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        loadLanguageData();
-        loadWordData();
-        loadTranslationEnglishData();
-        loadTranslationTurkishData();
+        // loadLanguageData();
+        // loadWordData();
+        // loadTranslationEnglishData();
+        // loadTranslationTurkishData();
     }
 
     private void loadLanguageData() {
