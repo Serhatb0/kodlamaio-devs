@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import com.biricik.devs.dao.abstracts.LanguageRepository;
@@ -34,6 +35,9 @@ public class BootstrapLanguageData implements CommandLineRunner {
         // loadTranslationEnglishData();
         // loadTranslationTurkishData();
     }
+
+  
+
 
     private void loadLanguageData() {
         this.languageRepository.save(new Language("English"));
