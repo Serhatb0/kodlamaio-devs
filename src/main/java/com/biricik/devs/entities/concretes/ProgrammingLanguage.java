@@ -6,11 +6,10 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.biricik.devs.entities.ParentEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,14 +22,9 @@ import lombok.ToString;
 @Entity
 @Table(name = "programming_languages")
 @NoArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 @ToString
-public class ProgrammingLanguage {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+public class ProgrammingLanguage extends ParentEntity {
 
     @Column(name = "name")
     private String name;
@@ -39,17 +33,21 @@ public class ProgrammingLanguage {
     List<ProgrammingLanguageTechnologie> programmingLanguageTechnologies;
 
     public ProgrammingLanguage(int id, String name) {
-        this.id = id;
+        super(id);
         this.name = name;
-    }
-
-    public ProgrammingLanguage(String name, List<ProgrammingLanguageTechnologie> programmingLanguageTechnologies) {
-        this.name = name;
-        this.programmingLanguageTechnologies = programmingLanguageTechnologies;
     }
 
     public ProgrammingLanguage(String name) {
         this.name = name;
     }
+
+    public ProgrammingLanguage(int id, String name,
+            List<ProgrammingLanguageTechnologie> programmingLanguageTechnologies) {
+        super(id);
+        this.name = name;
+        this.programmingLanguageTechnologies = programmingLanguageTechnologies;
+    }
+
+    
 
 }

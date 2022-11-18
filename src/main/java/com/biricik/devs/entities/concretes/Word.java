@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.biricik.devs.entities.ParentEntity;
 
 import lombok.*;
 
@@ -12,16 +13,9 @@ import lombok.*;
 @Entity
 @Table(name = "words")
 @NoArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 @ToString
-public class Word {
-
-
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+public class Word extends ParentEntity {
 
 	@Column(name = "`key`")
 	private String key;
