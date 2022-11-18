@@ -1,50 +1,65 @@
-2022-11-18 03:50:23,634 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-3] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-11-18 03:50:23,635 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-3] Initializing Servlet 'dispatcherServlet'
-2022-11-18 03:50:23,637 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-3] Completed initialization in 2 ms
-2022-11-18 03:50:23,649 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-3] Entering in Method : ProgrammingLanguagesController.getByIdProgrammingLanguage(..) , ClassName : com.biricik.devs.webApi.controllers.ProgrammingLanguagesController , Arguments : [10]
-2022-11-18 03:50:23,650 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-3] Metohd Type: GET
-2022-11-18 03:50:23,651 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-3] Header Name: content-type Header Value : application/json
-2022-11-18 03:50:23,652 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-3] Header Name: user-agent Header Value : PostmanRuntime/7.29.2
-2022-11-18 03:50:23,656 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-3] Header Name: accept Header Value : */*
-2022-11-18 03:50:23,658 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-3] Header Name: postman-token Header Value : ead6158d-0468-4285-a934-10909403b036
-2022-11-18 03:50:23,661 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-3] Header Name: host Header Value : localhost:8080
-2022-11-18 03:50:23,662 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-3] Header Name: accept-encoding Header Value : gzip, deflate, br
-2022-11-18 03:50:23,664 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-3] Header Name: connection Header Value : keep-alive
-2022-11-18 03:50:23,665 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-3] Header Name: content-length Header Value : 54
-2022-11-18 03:50:23,667 DEBUG com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-3] Request Path info :/api/programming-languages/10
-2022-11-18 03:50:23,696 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-3] "DataResult com.biricik.devs.webApi.controllers.ProgrammingLanguagesController.getByIdProgrammingLanguage(int)" executed in 47 ms
-2022-11-18 03:50:35,616 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-2] Entering in Method : ProgrammingLanguagesController.getByIdProgrammingLanguage(..) , ClassName : com.biricik.devs.webApi.controllers.ProgrammingLanguagesController , Arguments : [10]
-2022-11-18 03:50:35,617 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-2] Metohd Type: GET
-2022-11-18 03:50:35,618 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-2] Header Name: content-type Header Value : application/json
-2022-11-18 03:50:35,622 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-2] Header Name: user-agent Header Value : PostmanRuntime/7.29.2
-2022-11-18 03:50:35,624 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-2] Header Name: accept Header Value : */*
-2022-11-18 03:50:35,627 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-2] Header Name: postman-token Header Value : ef5a501c-e785-4971-953f-423d02d53309
-2022-11-18 03:50:35,629 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-2] Header Name: host Header Value : localhost:8080
-2022-11-18 03:50:35,630 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-2] Header Name: accept-encoding Header Value : gzip, deflate, br
-2022-11-18 03:50:35,631 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-2] Header Name: connection Header Value : keep-alive
-2022-11-18 03:50:35,632 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-2] Header Name: content-length Header Value : 54
-2022-11-18 03:50:35,632 DEBUG com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-2] Request Path info :/api/programming-languages/10
-2022-11-18 03:50:35,646 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-2] "DataResult com.biricik.devs.webApi.controllers.ProgrammingLanguagesController.getByIdProgrammingLanguage(int)" executed in 31 ms
-2022-11-18 03:50:38,507 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-4] Entering in Method : ProgrammingLanguagesController.getByIdProgrammingLanguage(..) , ClassName : com.biricik.devs.webApi.controllers.ProgrammingLanguagesController , Arguments : [10]
-2022-11-18 03:50:38,509 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-4] Metohd Type: GET
-2022-11-18 03:50:38,510 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-4] Header Name: content-type Header Value : application/json
-2022-11-18 03:50:38,511 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-4] Header Name: user-agent Header Value : PostmanRuntime/7.29.2
-2022-11-18 03:50:38,512 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-4] Header Name: accept Header Value : */*
-2022-11-18 03:50:38,512 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-4] Header Name: postman-token Header Value : 0e127fc1-0fe8-48a0-868a-82d8b9bb507e
-2022-11-18 03:50:38,513 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-4] Header Name: host Header Value : localhost:8080
-2022-11-18 03:50:38,514 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-4] Header Name: accept-encoding Header Value : gzip, deflate, br
-2022-11-18 03:50:38,514 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-4] Header Name: connection Header Value : keep-alive
-2022-11-18 03:50:38,515 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-4] Header Name: content-length Header Value : 54
-2022-11-18 03:50:38,516 DEBUG com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-4] Request Path info :/api/programming-languages/10
-2022-11-18 03:50:38,526 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-4] "DataResult com.biricik.devs.webApi.controllers.ProgrammingLanguagesController.getByIdProgrammingLanguage(int)" executed in 19 ms
-2022-11-18 03:50:53,503 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-5] Entering in Method : ProgrammingLanguagesController.addProgrammingLanguage(..) , ClassName : com.biricik.devs.webApi.controllers.ProgrammingLanguagesController , Arguments : [CreateProgrammingLanguageRequest[name=AA]]
-2022-11-18 03:50:53,504 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-5] Metohd Type: POST
-2022-11-18 03:50:53,505 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-5] Header Name: content-type Header Value : application/json
-2022-11-18 03:50:53,507 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-5] Header Name: user-agent Header Value : PostmanRuntime/7.29.2
-2022-11-18 03:50:53,510 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-5] Header Name: accept Header Value : */*
-2022-11-18 03:50:53,512 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-5] Header Name: postman-token Header Value : 1d4a1aba-8e37-4949-a27b-e59ec2d13a07
-2022-11-18 03:50:53,513 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-5] Header Name: host Header Value : localhost:8080
-2022-11-18 03:50:53,514 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-5] Header Name: accept-encoding Header Value : gzip, deflate, br
-2022-11-18 03:50:53,515 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-5] Header Name: connection Header Value : keep-alive
-2022-11-18 03:50:53,518 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-5] Header Name: content-length Header Value : 20
-2022-11-18 03:50:53,520 DEBUG com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-5] Request Path info :/api/programming-languages
+2022-11-19 01:28:10,154 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting DevsApplication using Java 19.0.1 on DESKTOP-16JBT10 with PID 12596 (C:\Users\Serhat\Desktop\kodlamaiodevs\devs\target\classes started by Serhat in C:\Users\Serhat\Desktop\kodlamaiodevs\devs)
+2022-11-19 01:28:10,162 INFO org.springframework.boot.SpringApplication [restartedMain] The following 1 profile is active: "dev"
+2022-11-19 01:28:10,298 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-11-19 01:28:10,299 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-11-19 01:28:12,220 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-11-19 01:28:12,364 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 111 ms. Found 5 JPA repository interfaces.
+2022-11-19 01:28:13,951 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2022-11-19 01:28:13,990 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-11-19 01:28:13,992 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-19 01:28:14,186 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-11-19 01:28:14,187 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 3886 ms
+2022-11-19 01:28:14,540 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-11-19 01:28:14,635 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 5.6.12.Final
+2022-11-19 01:28:14,918 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-11-19 01:28:15,267 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2022-11-19 01:28:15,632 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2022-11-19 01:28:15,673 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2022-11-19 01:28:16,822 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-11-19 01:28:16,850 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-19 01:28:18,143 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-11-19 01:28:19,656 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-11-19 01:28:19,740 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-19 01:28:19,755 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started DevsApplication in 10.387 seconds (JVM running for 11.59)
+2022-11-19 01:29:38,642 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-19 01:29:38,669 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2022-11-19 01:29:38,823 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 153 ms
+2022-11-19 01:29:40,841 INFO org.springdoc.api.AbstractOpenApiResource [http-nio-8080-exec-4] Init duration for springdoc-openapi is: 569 ms
+2022-11-19 01:29:59,178 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-6] Entering in Method : ProgrammingLanguagesController.addProgrammingLanguage(..) , ClassName : com.biricik.devs.webApi.controllers.ProgrammingLanguagesController , Arguments : [CreateProgrammingLanguageRequest[name=Java]]
+2022-11-19 01:29:59,180 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-6] Metohd Type: POST
+2022-11-19 01:29:59,186 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-6] Header Name: host Header Value : localhost:8080
+2022-11-19 01:29:59,188 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-6] Header Name: connection Header Value : keep-alive
+2022-11-19 01:29:59,190 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-6] Header Name: content-length Header Value : 20
+2022-11-19 01:29:59,192 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-6] Header Name: sec-ch-ua Header Value : "Google Chrome";v="107", "Chromium";v="107", "Not=A?Brand";v="24"
+2022-11-19 01:29:59,194 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-6] Header Name: accept Header Value : */*
+2022-11-19 01:29:59,196 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-6] Header Name: content-type Header Value : application/json
+2022-11-19 01:29:59,200 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-6] Header Name: sec-ch-ua-mobile Header Value : ?0
+2022-11-19 01:29:59,202 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-6] Header Name: user-agent Header Value : Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36
+2022-11-19 01:29:59,208 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-6] Header Name: sec-ch-ua-platform Header Value : "Windows"
+2022-11-19 01:29:59,211 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-6] Header Name: origin Header Value : http://localhost:8080
+2022-11-19 01:29:59,215 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-6] Header Name: sec-fetch-site Header Value : same-origin
+2022-11-19 01:29:59,220 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-6] Header Name: sec-fetch-mode Header Value : cors
+2022-11-19 01:29:59,222 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-6] Header Name: sec-fetch-dest Header Value : empty
+2022-11-19 01:29:59,224 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-6] Header Name: referer Header Value : http://localhost:8080/swagger-ui/index.html
+2022-11-19 01:29:59,227 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-6] Header Name: accept-encoding Header Value : gzip, deflate, br
+2022-11-19 01:29:59,228 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-6] Header Name: accept-language Header Value : en-US,en;q=0.9,tr;q=0.8,tr-TR;q=0.7
+2022-11-19 01:29:59,230 DEBUG com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-6] Request Path info :/api/programming-languages
+2022-11-19 01:32:24,856 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-10] Entering in Method : ProgrammingLanguageTechnologiesController.addProgrammingLanguageTechnologie(..) , ClassName : com.biricik.devs.webApi.controllers.ProgrammingLanguageTechnologiesController , Arguments : [CreateProgrammingLanguageTechnologieRequest[name=Spring, programmingLanguageId=1]]
+2022-11-19 01:32:24,879 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-10] Metohd Type: POST
+2022-11-19 01:32:24,884 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-10] Header Name: host Header Value : localhost:8080
+2022-11-19 01:32:24,887 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-10] Header Name: connection Header Value : keep-alive
+2022-11-19 01:32:24,888 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-10] Header Name: content-length Header Value : 52
+2022-11-19 01:32:24,891 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-10] Header Name: sec-ch-ua Header Value : "Google Chrome";v="107", "Chromium";v="107", "Not=A?Brand";v="24"
+2022-11-19 01:32:24,893 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-10] Header Name: accept Header Value : */*
+2022-11-19 01:32:24,894 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-10] Header Name: content-type Header Value : application/json
+2022-11-19 01:32:24,909 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-10] Header Name: sec-ch-ua-mobile Header Value : ?0
+2022-11-19 01:32:24,910 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-10] Header Name: user-agent Header Value : Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36
+2022-11-19 01:32:24,911 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-10] Header Name: sec-ch-ua-platform Header Value : "Windows"
+2022-11-19 01:32:24,912 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-10] Header Name: origin Header Value : http://localhost:8080
+2022-11-19 01:32:24,915 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-10] Header Name: sec-fetch-site Header Value : same-origin
+2022-11-19 01:32:24,918 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-10] Header Name: sec-fetch-mode Header Value : cors
+2022-11-19 01:32:24,919 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-10] Header Name: sec-fetch-dest Header Value : empty
+2022-11-19 01:32:24,920 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-10] Header Name: referer Header Value : http://localhost:8080/swagger-ui/index.html
+2022-11-19 01:32:24,923 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-10] Header Name: accept-encoding Header Value : gzip, deflate, br
+2022-11-19 01:32:24,925 INFO com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-10] Header Name: accept-language Header Value : en-US,en;q=0.9,tr;q=0.8,tr-TR;q=0.7
+2022-11-19 01:32:24,926 DEBUG com.biricik.devs.aspects.LoggingAspect [http-nio-8080-exec-10] Request Path info :/api/programming_language_technologies

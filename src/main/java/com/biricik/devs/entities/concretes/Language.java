@@ -5,11 +5,10 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.biricik.devs.entities.ParentEntity;
 
 import lombok.*;
 
@@ -19,14 +18,10 @@ import lombok.*;
 @Entity
 @Table(name = "languages")
 @NoArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 @ToString
-public class Language {
+public class Language extends ParentEntity {
     
-    @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
 
 	@Column(name = "name")
 	private String name;
@@ -37,6 +32,8 @@ public class Language {
 	public Language(String name) {
 		this.name = name;
 	}
+
+	
 
 	
 }
