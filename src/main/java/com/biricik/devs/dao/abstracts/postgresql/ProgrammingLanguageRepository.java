@@ -1,4 +1,4 @@
-package com.biricik.devs.dao.abstracts;
+package com.biricik.devs.dao.abstracts.postgresql;
 
 
 import java.util.Optional;

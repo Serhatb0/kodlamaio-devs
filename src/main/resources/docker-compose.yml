@@ -1,0 +1,49 @@
+version: '3.1'
+
+services:
+  postgres:
+    container_name: postgres_container
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456 
+      - PGDATA= /data/postgres
+      - POSTGRES_DB=devs
+    volumes:
+      - postgres:/data/postgres
+  
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=biricikserhat47@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    ports:
+      - 5000:80
+   
+    
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+
+  elasticsearch:
+    container_name: elasticsearch_container
+    image: elasticsearch:7.9.2
+    ports:
+      - 9200:9200
+      - 9300:9300
+
+    environment:
+      - discovery.type=single-node
+      - ELASTIC_USERNAME=elasticsearch
+      - ELASTIC_PASSWORD=password
+
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+
+volumes:
+    postgres:
+    pgadmin-data:
+    elasticsearch-data:

@@ -10,18 +10,26 @@ import com.biricik.devs.business.responses.ProgrammingLanguageResponses.GetByIdP
 import com.biricik.devs.business.responses.ProgrammingLanguageResponses.UpdateProgrammingLanguageResponse;
 import com.biricik.devs.core.utilities.result.DataResult;
 import com.biricik.devs.core.utilities.result.Result;
+import com.biricik.devs.entities.concretes.ProgrammingLanguage;
 
 public interface ProgrammingLanguageService {
-    public DataResult<List<GetAllProgrammingLanguagesResponse>> getAllProgrammingLanguage();
+        public DataResult<List<GetAllProgrammingLanguagesResponse>> getAllProgrammingLanguage();
 
-    public DataResult<GetByIdProgrammingLanguagesResponse> getByIdProgrammingLanguage(int id);
+        public DataResult<GetByIdProgrammingLanguagesResponse> getByIdProgrammingLanguage(int id);
 
-    public DataResult<CreateProgrammingLanguageResponse> addProgrammingLanguage(
-            CreateProgrammingLanguageRequest createProgrammingLanguageRequest);
+        public DataResult<CreateProgrammingLanguageResponse> addProgrammingLanguage(
+                        CreateProgrammingLanguageRequest createProgrammingLanguageRequest);
 
-    public DataResult<UpdateProgrammingLanguageResponse> updateProgrammingLanguage(int id,
-            UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest);
+        public DataResult<UpdateProgrammingLanguageResponse> updateProgrammingLanguage(int id,
+                        UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest);
 
-    public Result deleteProgrammingLanguage(int id);
+        public Result deleteProgrammingLanguage(int id);
+
+        public ProgrammingLanguage findById(int id);
+
+        public DataResult<List<GetAllProgrammingLanguagesResponse>> findByProgrammingLanguageName(String name);
+
+        public DataResult<List<GetAllProgrammingLanguagesResponse>> findByProgrammingLanguageNameOrProgrammingLanguageTechnologieName(String name);
+
 
 }

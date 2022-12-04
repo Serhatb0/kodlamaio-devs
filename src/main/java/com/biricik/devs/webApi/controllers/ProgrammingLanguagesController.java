@@ -2,7 +2,6 @@ package com.biricik.devs.webApi.controllers;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,14 +28,28 @@ public class ProgrammingLanguagesController {
 
     private final ProgrammingLanguageService programmingLanguageService;
 
-    @Autowired
     public ProgrammingLanguagesController(ProgrammingLanguageService programmingLanguageService) {
         this.programmingLanguageService = programmingLanguageService;
+
     }
 
     @GetMapping("/programming-languages")
     public DataResult<List<GetAllProgrammingLanguagesResponse>> getAllProgrammingLanguage() {
         return programmingLanguageService.getAllProgrammingLanguage();
+    }
+
+    @GetMapping("/programming-languages-name/{searchKey}")
+    public DataResult<List<GetAllProgrammingLanguagesResponse>> findByProgrammingLanguageName(
+            @PathVariable String searchKey) {
+        return programmingLanguageService.findByProgrammingLanguageName(searchKey);
+
+    }
+
+    @GetMapping("/programming-languages-name-or-technologiname/{searchKey}")
+    public DataResult<List<GetAllProgrammingLanguagesResponse>> findByProgrammingLanguageNameOrProgrammingLanguageTechnologieName(
+            @PathVariable String searchKey) {
+        return programmingLanguageService.findByProgrammingLanguageNameOrProgrammingLanguageTechnologieName(searchKey);
+
     }
 
     @LogExecutionTime

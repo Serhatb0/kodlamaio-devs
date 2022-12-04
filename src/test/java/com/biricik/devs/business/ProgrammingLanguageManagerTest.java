@@ -16,10 +16,10 @@ import com.biricik.devs.business.responses.ProgrammingLanguageResponses.GetByIdP
 import com.biricik.devs.business.responses.ProgrammingLanguageResponses.UpdateProgrammingLanguageResponse;
 import com.biricik.devs.core.utilities.result.DataResult;
 import com.biricik.devs.core.utilities.result.Result;
+import com.biricik.devs.dao.abstracts.postgresql.ProgrammingLanguageRepository;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import com.biricik.devs.dao.abstracts.ProgrammingLanguageRepository;
 import com.biricik.devs.entities.concretes.ProgrammingLanguage;
 
 import static org.mockito.BDDMockito.*;
