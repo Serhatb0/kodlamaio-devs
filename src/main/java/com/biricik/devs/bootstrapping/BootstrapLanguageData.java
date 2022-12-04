@@ -7,9 +7,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-import com.biricik.devs.dao.abstracts.LanguageRepository;
-import com.biricik.devs.dao.abstracts.TranslationRepository;
-import com.biricik.devs.dao.abstracts.WordRepository;
+import com.biricik.devs.dao.abstracts.postgresql.LanguageRepository;
+import com.biricik.devs.dao.abstracts.postgresql.TranslationRepository;
+import com.biricik.devs.dao.abstracts.postgresql.WordRepository;
 import com.biricik.devs.entities.concretes.Language;
 import com.biricik.devs.entities.concretes.Translation;
 import com.biricik.devs.entities.concretes.Word;

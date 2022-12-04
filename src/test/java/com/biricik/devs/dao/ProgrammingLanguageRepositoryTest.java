@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import com.biricik.devs.TestSupport;
-import com.biricik.devs.dao.abstracts.ProgrammingLanguageRepository;
+import com.biricik.devs.dao.abstracts.postgresql.ProgrammingLanguageRepository;
 import com.biricik.devs.entities.concretes.ProgrammingLanguage;
 import com.biricik.devs.entities.concretes.ProgrammingLanguageTechnologie;
 

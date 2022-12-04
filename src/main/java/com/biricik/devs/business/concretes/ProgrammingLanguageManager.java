@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 import com.biricik.devs.business.abstracts.ProgrammingLanguageService;
@@ -21,22 +21,46 @@ import com.biricik.devs.core.utilities.result.ErrorResult;
 import com.biricik.devs.core.utilities.result.Result;
 import com.biricik.devs.core.utilities.result.SuccessDataResult;
 import com.biricik.devs.core.utilities.result.SuccessResult;
-import com.biricik.devs.dao.abstracts.ProgrammingLanguageRepository;
+import com.biricik.devs.dao.abstracts.elasticsearch.ProgrammingLanguageEsRepository;
+import com.biricik.devs.dao.abstracts.postgresql.ProgrammingLanguageRepository;
 import com.biricik.devs.entities.concretes.ProgrammingLanguage;
+import com.biricik.devs.event.ProgrammingLanguageEsCreatedEvent;
+import com.biricik.devs.event.ProgrammingLanguageEsDeletedEvent;
 
 @Service
 public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 
     private final ProgrammingLanguageRepository programmingLanguageRepository;
+    private final ApplicationEventPublisher applicationEventPublisher;
+    private final ProgrammingLanguageEsRepository programmingLanguageEsRepository;
 
-    @Autowired
-    public ProgrammingLanguageManager(ProgrammingLanguageRepository programmingLanguageRepository) {
+    public ProgrammingLanguageManager(ProgrammingLanguageRepository programmingLanguageRepository,
+            ApplicationEventPublisher applicationEventPublisher,
+            ProgrammingLanguageEsRepository programmingLanguageEsRepository) {
         this.programmingLanguageRepository = programmingLanguageRepository;
+        this.applicationEventPublisher = applicationEventPublisher;
+        this.programmingLanguageEsRepository = programmingLanguageEsRepository;
     }
 
     @Override
     public DataResult<List<GetAllProgrammingLanguagesResponse>> getAllProgrammingLanguage() {
         return new SuccessDataResult<>(programmingLanguageRepository.findAll().stream()
+                .map(GetAllProgrammingLanguagesResponse::convert).collect(Collectors.toList()));
+    }
+
+    @Override
+    public DataResult<List<GetAllProgrammingLanguagesResponse>> findByProgrammingLanguageName(String name) {
+
+        return new SuccessDataResult<>(programmingLanguageEsRepository.findByProgrammingLanguageName(name).stream()
+                .map(GetAllProgrammingLanguagesResponse::convert).collect(Collectors.toList()));
+
+    }
+
+    @Override
+    public DataResult<List<GetAllProgrammingLanguagesResponse>> findByProgrammingLanguageNameOrProgrammingLanguageTechnologieName(
+            String name) {
+        return new SuccessDataResult<>(programmingLanguageEsRepository
+                .findByProgrammingLanguageNameOrProgrammingLanguageTechnologieName(name).stream()
                 .map(GetAllProgrammingLanguagesResponse::convert).collect(Collectors.toList()));
     }
 
@@ -50,11 +74,11 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
         }
 
         return new SuccessDataResult<>(
-            optionalProgrammingLanguage.map(GetByIdProgrammingLanguagesResponse::convert).get());
+                optionalProgrammingLanguage.map(GetByIdProgrammingLanguagesResponse::convert).get());
     }
 
     @Override
-    public  DataResult<CreateProgrammingLanguageResponse> addProgrammingLanguage(
+    public DataResult<CreateProgrammingLanguageResponse> addProgrammingLanguage(
             CreateProgrammingLanguageRequest createProgrammingLanguageRequest) {
 
         ProgrammingLanguage program = new ProgrammingLanguage(createProgrammingLanguageRequest.name());
@@ -62,11 +86,11 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
         ProgrammingLanguage programmingLanguage = programmingLanguageRepository
                 .save(program);
 
-        return new
-        SuccessDataResult<>(CreateProgrammingLanguageResponse.convert(programmingLanguage),
-        Messages.PROGRAMMİNGLANGUAGEADD);
-            
-        
+        applicationEventPublisher.publishEvent(new ProgrammingLanguageEsCreatedEvent(programmingLanguage));
+
+        return new SuccessDataResult<>(CreateProgrammingLanguageResponse.convert(programmingLanguage),
+                Messages.PROGRAMMİNGLANGUAGEADD);
+
     }
 
     @Override
@@ -86,8 +110,12 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
                     programmingLanguageRepository.save(programmingLanguage);
                 });
 
+        applicationEventPublisher
+                .publishEvent(new ProgrammingLanguageEsCreatedEvent(optionalProgrammingLanguage.get()));
+
         return new SuccessDataResult<>(
-                optionalProgrammingLanguage.map(UpdateProgrammingLanguageResponse::convert).get(),Messages.PROGRAMMİNGLANGUAGEUPDATE);
+                optionalProgrammingLanguage.map(UpdateProgrammingLanguageResponse::convert).get(),
+                Messages.PROGRAMMİNGLANGUAGEUPDATE);
 
     }
 
@@ -98,8 +126,17 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
             return new ErrorResult(Messages.PROGRAMMİNGLANGUAGENOTFOUND);
         }
         programmingLanguageRepository.delete(programmingLanguage.get());
+
+        applicationEventPublisher.publishEvent(new ProgrammingLanguageEsDeletedEvent(id));
+
         return new SuccessResult(Messages.PROGRAMMİNGLANGUAGEDELETE);
 
+    }
+
+    @Override
+    public ProgrammingLanguage findById(int id) {
+
+        return programmingLanguageRepository.findById(id).get();
     }
 
 }

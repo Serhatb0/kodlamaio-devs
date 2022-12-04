@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import com.biricik.devs.TestSupport;
-import com.biricik.devs.dao.abstracts.LanguageRepository;
+import com.biricik.devs.dao.abstracts.postgresql.LanguageRepository;
 import com.biricik.devs.entities.concretes.Language;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 

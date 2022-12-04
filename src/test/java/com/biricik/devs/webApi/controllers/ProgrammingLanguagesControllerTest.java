@@ -14,7 +14,7 @@ import com.biricik.devs.TestSupport;
 import com.biricik.devs.business.abstracts.ProgrammingLanguageService;
 import com.biricik.devs.business.requests.ProgrammingLanguageRequests.CreateProgrammingLanguageRequest;
 import com.biricik.devs.business.requests.ProgrammingLanguageRequests.UpdateProgrammingLanguageRequest;
-import com.biricik.devs.dao.abstracts.ProgrammingLanguageRepository;
+import com.biricik.devs.dao.abstracts.postgresql.ProgrammingLanguageRepository;
 import com.biricik.devs.entities.concretes.ProgrammingLanguage;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import static org.hamcrest.Matchers.*;
