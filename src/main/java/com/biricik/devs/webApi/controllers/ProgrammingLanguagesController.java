@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.biricik.devs.annotation.LogExecutionTime;
 import com.biricik.devs.business.abstracts.ProgrammingLanguageService;
+import com.biricik.devs.business.requests.PaginatedRequest;
 import com.biricik.devs.business.requests.ProgrammingLanguageRequests.CreateProgrammingLanguageRequest;
 import com.biricik.devs.business.requests.ProgrammingLanguageRequests.UpdateProgrammingLanguageRequest;
+import com.biricik.devs.business.responses.PaginatedGenericResponse;
 import com.biricik.devs.business.responses.ProgrammingLanguageResponses.CreateProgrammingLanguageResponse;
 import com.biricik.devs.business.responses.ProgrammingLanguageResponses.GetAllProgrammingLanguagesResponse;
 import com.biricik.devs.business.responses.ProgrammingLanguageResponses.GetByIdProgrammingLanguagesResponse;
@@ -34,8 +36,10 @@ public class ProgrammingLanguagesController {
     }
 
     @GetMapping("/programming-languages")
-    public DataResult<List<GetAllProgrammingLanguagesResponse>> getAllProgrammingLanguage() {
-        return programmingLanguageService.getAllProgrammingLanguage();
+    public DataResult<PaginatedGenericResponse<GetAllProgrammingLanguagesResponse>> getAllProgrammingLanguage(
+            @RequestBody PaginatedRequest paginatedRequest) {
+
+        return programmingLanguageService.getAllProgrammingLanguage(paginatedRequest);
     }
 
     @GetMapping("/programming-languages-name/{searchKey}")
@@ -46,9 +50,10 @@ public class ProgrammingLanguagesController {
     }
 
     @GetMapping("/programming-languages-name-or-technologiname/{searchKey}")
-    public DataResult<List<GetAllProgrammingLanguagesResponse>> findByProgrammingLanguageNameOrProgrammingLanguageTechnologieName(
-            @PathVariable String searchKey) {
-        return programmingLanguageService.findByProgrammingLanguageNameOrProgrammingLanguageTechnologieName(searchKey);
+    public DataResult<PaginatedGenericResponse<GetAllProgrammingLanguagesResponse>> findByProgrammingLanguageNameOrProgrammingLanguageTechnologieName(
+            @RequestBody PaginatedRequest paginatedRequest, @PathVariable String searchKey) {
+        return programmingLanguageService.findByProgrammingLanguageNameOrProgrammingLanguageTechnologieName(searchKey,
+                paginatedRequest);
 
     }
 
