@@ -14,6 +14,8 @@ public record GetAllProgrammingLanguagesResponse(int id, String name,List<String
         programmingLanguage.getProgrammingLanguageTechnologies().stream().map(item -> item.getName()).toList());
     }
 
+    
+
     public static GetAllProgrammingLanguagesResponse convert(final ProgrammingLanguageEs programmingLanguageEs) {
         if(programmingLanguageEs.getProgrammingLanguageTechnologieEs() == null){
             programmingLanguageEs.setProgrammingLanguageTechnologieEs(Collections.emptyList());

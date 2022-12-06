@@ -2,6 +2,8 @@ package com.biricik.devs.dao.abstracts.elasticsearch;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.annotations.Query;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
@@ -32,6 +34,6 @@ public interface ProgrammingLanguageEsRepository extends ElasticsearchRepository
             "       } ]\n" +
             "  }" +
             "}")
-    List<ProgrammingLanguageEs> findByProgrammingLanguageNameOrProgrammingLanguageTechnologieName(String name);
+    Page<ProgrammingLanguageEs> findByProgrammingLanguageNameOrProgrammingLanguageTechnologieName(String name,Pageable pageable);
 
 }
