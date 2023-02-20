@@ -1,6 +1,13 @@
 package com.biricik.devs.business.requests.ProgrammingLanguageRequests;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public record CreateProgrammingLanguageRequest(String name) {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class CreateProgrammingLanguageRequest {
 
+	private String name;
 }

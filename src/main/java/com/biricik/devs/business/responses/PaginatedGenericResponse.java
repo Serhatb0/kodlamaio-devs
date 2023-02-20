@@ -2,13 +2,25 @@ package com.biricik.devs.business.responses;
 
 import java.util.List;
 
-public record PaginatedGenericResponse<T>(List<T> content, int pageNumber,
-                int pageSize, long totalElements, long totalPages) {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-        public PaginatedGenericResponse<T> convert(List<T> content,int pageNumber,
-                        int pageSize, long totalElements, long totalPages) {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class PaginatedGenericResponse<T> {
 
-                return new PaginatedGenericResponse<T>(content, pageNumber, pageSize, totalElements, totalPages);
-        }
+	private List<T> content;
+	private int pageNumber;
+	private int pageSize;
+	private long totalElements;
+	private long totalPages;
+
+	public PaginatedGenericResponse<T> convert(List<T> content, int pageNumber, int pageSize, long totalElements,
+			long totalPages) {
+
+		return new PaginatedGenericResponse<T>(content, pageNumber, pageSize, totalElements, totalPages);
+	}
 
 }

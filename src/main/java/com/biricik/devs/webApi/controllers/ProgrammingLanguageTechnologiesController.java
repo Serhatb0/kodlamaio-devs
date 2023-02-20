@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.biricik.devs.business.abstracts.ProgrammingLanguageTechnologieService;
@@ -23,40 +22,40 @@ import com.biricik.devs.core.utilities.result.DataResult;
 import com.biricik.devs.core.utilities.result.Result;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/programming_language_technologies")
 public class ProgrammingLanguageTechnologiesController {
 
-    private final ProgrammingLanguageTechnologieService programmingLanguageTechnologieService;
+	private final ProgrammingLanguageTechnologieService programmingLanguageTechnologieService;
 
-    @Autowired
-    public ProgrammingLanguageTechnologiesController(
-            ProgrammingLanguageTechnologieService programmingLanguageTechnologieService) {
-        this.programmingLanguageTechnologieService = programmingLanguageTechnologieService;
-    }
+	@Autowired
+	public ProgrammingLanguageTechnologiesController(
+			ProgrammingLanguageTechnologieService programmingLanguageTechnologieService) {
+		this.programmingLanguageTechnologieService = programmingLanguageTechnologieService;
+	}
 
-    @PostMapping("/programming_language_technologies")
-    public DataResult<CreateProgrammingLanguageTechnologieResponse> addProgrammingLanguageTechnologie(
-            @RequestBody CreateProgrammingLanguageTechnologieRequest createProgrammingLanguageTechnologieRequest) {
-        return programmingLanguageTechnologieService
-                .addProgrammingLanguageTechnologie(createProgrammingLanguageTechnologieRequest);
-    }
+	@PostMapping()
+	public DataResult<CreateProgrammingLanguageTechnologieResponse> addProgrammingLanguageTechnologie(
+			@RequestBody CreateProgrammingLanguageTechnologieRequest createProgrammingLanguageTechnologieRequest) {
+		return programmingLanguageTechnologieService
+				.addProgrammingLanguageTechnologie(createProgrammingLanguageTechnologieRequest);
+	}
 
-    @GetMapping("/programming_language_technologies")
-    public DataResult<List<GetAllProgrammingLanguagesTechnologieResponse>> getProgrammingLanguageTechnologies() {
-        return programmingLanguageTechnologieService.getAllProgrammingLanguageTechnologies();
-    }
+	@GetMapping()
+	public DataResult<List<GetAllProgrammingLanguagesTechnologieResponse>> getProgrammingLanguageTechnologies() {
+		return programmingLanguageTechnologieService.getAllProgrammingLanguageTechnologies();
+	}
 
-    @DeleteMapping("/programming_language_technologies/{id}")
-    public Result deleteProgrammingLanguageTechnologie(@PathVariable int id) {
-        return programmingLanguageTechnologieService.deleteProgrammingLanguageTechnologie(id);
-    }
+	@DeleteMapping("/{id}")
+	public Result deleteProgrammingLanguageTechnologie(@PathVariable int id) {
+		return programmingLanguageTechnologieService.deleteProgrammingLanguageTechnologie(id);
+	}
 
-    @PutMapping("/programming_language_technologies/{id}")
-    public DataResult<UpdateProgrammingLanguageTechnologieResponse> updateProgrammingLanguageTechnologie(
-            @RequestParam int id,
-            @RequestBody UpdateProgrammingLanguageTechnologieRequest updateProgrammingLanguageTechnologieRequest) {
-        return programmingLanguageTechnologieService.updateProgrammingLanguageTechnologies(id,
-                updateProgrammingLanguageTechnologieRequest);
-    }
+	@PutMapping()
+	public DataResult<UpdateProgrammingLanguageTechnologieResponse> updateProgrammingLanguageTechnologie(
+
+			@RequestBody UpdateProgrammingLanguageTechnologieRequest updateProgrammingLanguageTechnologieRequest) {
+		return programmingLanguageTechnologieService
+				.updateProgrammingLanguageTechnologies(updateProgrammingLanguageTechnologieRequest);
+	}
 
 }

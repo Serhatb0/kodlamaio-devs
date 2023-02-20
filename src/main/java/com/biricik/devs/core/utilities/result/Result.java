@@ -23,10 +23,7 @@ public class Result {
         return this.get(message);
     }
 
-    
-    public String getMessageTest() {
-        return message;
-    }
+  
 
     private String get(String message) {
         return LanguageSelector.languageSelector(message);

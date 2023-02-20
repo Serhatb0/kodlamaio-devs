@@ -1,14 +1,15 @@
 package com.biricik.devs.business.responses.ProgrammingLanguageResponses;
 
-import com.biricik.devs.entities.concretes.ProgrammingLanguage;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public record UpdateProgrammingLanguageResponse(int id, String name) {
 
-    public UpdateProgrammingLanguageResponse() {
-        this(0, null);
-    }
+@Data
+@AllArgsConstructor	
+@NoArgsConstructor
+public class UpdateProgrammingLanguageResponse{
 
-    public static UpdateProgrammingLanguageResponse convert(final ProgrammingLanguage programmingLanguage) {
-        return new UpdateProgrammingLanguageResponse(programmingLanguage.getId(), programmingLanguage.getName());
-    }
+    private int id;
+    private String name;
 }
