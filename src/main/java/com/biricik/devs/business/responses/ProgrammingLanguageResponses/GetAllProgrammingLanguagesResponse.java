@@ -1,28 +1,16 @@
 package com.biricik.devs.business.responses.ProgrammingLanguageResponses;
 
 
-import java.util.Collections;
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import com.biricik.devs.entities.concretes.ProgrammingLanguage;
-import com.biricik.devs.entities.elasticsearch.ProgrammingLanguageEs;
+@Data
+@AllArgsConstructor	
+@NoArgsConstructor
+public class GetAllProgrammingLanguagesResponse {
+	private int id; 
+	private String name;
 
-public record GetAllProgrammingLanguagesResponse(int id, String name,List<String> technologieName) {
-
-    public static GetAllProgrammingLanguagesResponse convert(final ProgrammingLanguage programmingLanguage) {
-        return new GetAllProgrammingLanguagesResponse(programmingLanguage.getId(), programmingLanguage.getName(),
-        programmingLanguage.getProgrammingLanguageTechnologies().stream().map(item -> item.getName()).toList());
-    }
-
-    
-
-    public static GetAllProgrammingLanguagesResponse convert(final ProgrammingLanguageEs programmingLanguageEs) {
-        if(programmingLanguageEs.getProgrammingLanguageTechnologieEs() == null){
-            programmingLanguageEs.setProgrammingLanguageTechnologieEs(Collections.emptyList());
-        }
-
-        return new GetAllProgrammingLanguagesResponse(programmingLanguageEs.getId(), programmingLanguageEs.getName(),
-            programmingLanguageEs.getProgrammingLanguageTechnologieEs().stream().map(item -> item.getName()).toList());
-
-    }
+      
 }

@@ -1,13 +1,17 @@
 package com.biricik.devs.business.responses.ProgrammingLanguageTechnologieResponses;
 
-import com.biricik.devs.entities.concretes.ProgrammingLanguageTechnologie;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public record CreateProgrammingLanguageTechnologieResponse(int id 
-,String programmingLanguageTechnologieName,String programmingLanguageName) {
-    
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class CreateProgrammingLanguageTechnologieResponse {
 
-    public static CreateProgrammingLanguageTechnologieResponse convert(final ProgrammingLanguageTechnologie programmingLanguageTechnologie) {
-        return new CreateProgrammingLanguageTechnologieResponse(programmingLanguageTechnologie.getId(), 
-        programmingLanguageTechnologie.getName(),programmingLanguageTechnologie.getProgrammingLanguage().getName());
-    }
+	private int id; 
+	String technologieName;
+	private String programmingLanguageName;
+
+	
 }

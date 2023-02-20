@@ -17,7 +17,7 @@ public interface ProgrammingLanguageTechnologieService {
 
     public DataResult<List<GetAllProgrammingLanguagesTechnologieResponse>> getAllProgrammingLanguageTechnologies();
 
-    public DataResult<UpdateProgrammingLanguageTechnologieResponse> updateProgrammingLanguageTechnologies(int id,
+    public DataResult<UpdateProgrammingLanguageTechnologieResponse> updateProgrammingLanguageTechnologies(
             UpdateProgrammingLanguageTechnologieRequest updateProgrammingLanguageRequest);
 
     public Result deleteProgrammingLanguageTechnologie(int id);

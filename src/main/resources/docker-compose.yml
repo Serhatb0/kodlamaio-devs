@@ -28,22 +28,8 @@ services:
       - pgadmin-data:/var/lib/pgadmin
 
 
-  elasticsearch:
-    container_name: elasticsearch_container
-    image: elasticsearch:7.9.2
-    ports:
-      - 9200:9200
-      - 9300:9300
 
-    environment:
-      - discovery.type=single-node
-      - ELASTIC_USERNAME=elasticsearch
-      - ELASTIC_PASSWORD=password
-
-    volumes:
-      - elasticsearch-data:/usr/share/elasticsearch/data
 
 volumes:
     postgres:
     pgadmin-data:
-    elasticsearch-data:

@@ -1,5 +1,6 @@
 package com.biricik.devs.entities.concretes;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -8,7 +9,11 @@ import javax.persistence.Table;
 
 import com.biricik.devs.entities.ParentEntity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @AllArgsConstructor
@@ -19,14 +24,15 @@ import lombok.*;
 @ToString
 public class ProgrammingLanguageTechnologie extends ParentEntity {
 
-    private String name;
+	@Column(name = "technologie_name")
+    private String technologieName;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "programming_language_id")
     private ProgrammingLanguage programmingLanguage;
 
-    public ProgrammingLanguageTechnologie(String name) {
-        this.name = name;
+    public ProgrammingLanguageTechnologie(String technologieName) {
+        this.technologieName = technologieName;
     }
 
 }
