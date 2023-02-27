@@ -23,13 +23,14 @@ import lombok.ToString;
 @Table(name = "programming_languages")
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@ToString
+@ToString(exclude = "programmingLanguageTechnologies")
 public class ProgrammingLanguage extends ParentEntity {
 
     @Column(name = "name")
     private String name;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "programmingLanguage")
+ 
     List<ProgrammingLanguageTechnologie> programmingLanguageTechnologies;
 
     public ProgrammingLanguage(int id, String name) {

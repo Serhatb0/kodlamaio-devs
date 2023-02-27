@@ -56,7 +56,8 @@ public class ProgrammingLanguageTechnologieManager implements ProgrammingLanguag
 		technologie.setId(0);
 		ProgrammingLanguageTechnologie programmingLanguageTechnologie = this.programmingLanguageTechnologieRepository
 				.save(technologie);
-//		System.out.println(programmingLanguageTechnologie.getProgrammingLanguage());
+
+		
 		return new SuccessDataResult<>(
 				modelMapperService.forResponse().map(programmingLanguageTechnologie,
 						CreateProgrammingLanguageTechnologieResponse.class) ,

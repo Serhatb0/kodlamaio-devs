@@ -21,7 +21,6 @@ import com.biricik.devs.business.responses.ProgrammingLanguageResponses.GetByIdP
 import com.biricik.devs.business.responses.ProgrammingLanguageResponses.UpdateProgrammingLanguageResponse;
 import com.biricik.devs.core.utilities.mappers.ModelMapperService;
 import com.biricik.devs.core.utilities.result.DataResult;
-import com.biricik.devs.core.utilities.result.ErrorDataResult;
 import com.biricik.devs.core.utilities.result.ErrorResult;
 import com.biricik.devs.core.utilities.result.Result;
 import com.biricik.devs.core.utilities.result.SuccessDataResult;
@@ -63,11 +62,11 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 
 	@Override
 	public DataResult<GetByIdProgrammingLanguagesResponse> getByIdProgrammingLanguage(int id) {
-		Optional<ProgrammingLanguage> optionalProgrammingLanguage = programmingLanguageRepository.findById(id);
+		ProgrammingLanguage optionalProgrammingLanguage = programmingLanguageRepository.findById(id).get();
 
-		if (optionalProgrammingLanguage.isEmpty()) {
-			return new ErrorDataResult<>(Messages.PROGRAMMİNGLANGUAGENOTFOUND);
-		}
+//		if (optionalProgrammingLanguage.isEmpty()) {
+//			return new ErrorDataResult<>(Messages.PROGRAMMİNGLANGUAGENOTFOUND);
+//		}
 
 		GetByIdProgrammingLanguagesResponse response = modelMapperService.forResponse().map(optionalProgrammingLanguage,
 				GetByIdProgrammingLanguagesResponse.class);

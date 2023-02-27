@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.biricik.devs.entities.ParentEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,6 +30,7 @@ public class ProgrammingLanguageTechnologie extends ParentEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "programming_language_id")
+    @JsonIgnore
     private ProgrammingLanguage programmingLanguage;
 
     public ProgrammingLanguageTechnologie(String technologieName) {
