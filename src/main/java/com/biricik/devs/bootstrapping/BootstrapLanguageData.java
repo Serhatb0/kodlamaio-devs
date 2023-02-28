@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import com.biricik.devs.dao.abstracts.LanguageRepository;
@@ -30,10 +29,10 @@ public class BootstrapLanguageData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // loadLanguageData();
-        // loadWordData();
-        // loadTranslationEnglishData();
-        // loadTranslationTurkishData();
+         loadLanguageData();
+         loadWordData();
+         loadTranslationEnglishData();
+         loadTranslationTurkishData();
     }
 
   
@@ -49,15 +48,9 @@ public class BootstrapLanguageData implements CommandLineRunner {
 
         List<Word> words = new ArrayList<>();
 
-        words.add(new Word("programming.language.added"));
-        words.add(new Word("programming.language.updated"));
-        words.add(new Word("programming.language.delete"));
-        words.add(new Word("programming.language.not.found"));
-
-        words.add(new Word("programming.language.technologie.added"));
-        words.add(new Word("programming.language.technologie.updated"));
-        words.add(new Word("programming.language.technologie.delete"));
-        words.add(new Word("programming.language.technologie.not.found"));
+     
+        words.add(new Word("0001"));
+        words.add(new Word("0002"));
 
         this.wordRepository.saveAll(words);
 
@@ -67,29 +60,14 @@ public class BootstrapLanguageData implements CommandLineRunner {
         List<Translation> translationsEnglish = new ArrayList<>();
         Language english = this.languageRepository.findByName("English").get();
 
-        translationsEnglish.add(new Translation(0, "Programming Language Added",
-                wordRepository.findWordByKey("programming.language.added").get(), english));
+      
 
-        translationsEnglish.add(new Translation(0, "Programming Language Updated",
-                wordRepository.findWordByKey("programming.language.updated").get(), english));
-
-        translationsEnglish.add(new Translation(0, "Programming Language Deleted",
-                wordRepository.findWordByKey("programming.language.delete").get(), english));
-
-        translationsEnglish.add(new Translation(0, "Programming Language Not Found",
-                wordRepository.findWordByKey("programming.language.not.found").get(), english));
-
-        translationsEnglish.add(new Translation(0, "Programming Language Technologie Added",
-                wordRepository.findWordByKey("programming.language.technologie.added").get(), english));
-
-        translationsEnglish.add(new Translation(0, "Programming Language Technologie Updated",
-                wordRepository.findWordByKey("programming.language.technologie.updated").get(), english));
-
-        translationsEnglish.add(new Translation(0, "Programming Language Technologie Deleted",
-                wordRepository.findWordByKey("programming.language.technologie.delete").get(), english));
-
-        translationsEnglish.add(new Translation(0, "Programming Language Technologie Not Found",
-                wordRepository.findWordByKey("programming.language.technologie.not.found").get(), english));
+      
+        translationsEnglish.add(new Translation(0, "Technologies of a Programming Language should be at most 4",
+                wordRepository.findWordByKey("0001").get(), english));
+        
+        translationsEnglish.add(new Translation(0, "Element not found",
+                wordRepository.findWordByKey("0002").get(), english));
 
         this.translationRepository.saveAll(translationsEnglish);
 
@@ -99,29 +77,15 @@ public class BootstrapLanguageData implements CommandLineRunner {
         List<Translation> translationsTurlish = new ArrayList<>();
         Language turkish = this.languageRepository.findByName("Turkish").get();
 
-        translationsTurlish.add(new Translation(0, "Programlama Dili Eklendi",
-                wordRepository.findWordByKey("programming.language.added").get(), turkish));
+ 
+        
+        translationsTurlish.add(new Translation(0, "Bir Programlama Dilinin Teknolojileri en fazla 4 tane olmalı",
+                wordRepository.findWordByKey("0001").get(), turkish));
+        
+        translationsTurlish.add(new Translation(0, "Öğe bulunamadı",
+                wordRepository.findWordByKey("0002").get(), turkish));
 
-        translationsTurlish.add(new Translation(0, "Programlama Dili Güncellendi",
-                wordRepository.findWordByKey("programming.language.updated").get(), turkish));
 
-        translationsTurlish.add(new Translation(0, "Programlama Dili Silindi",
-                wordRepository.findWordByKey("programming.language.delete").get(), turkish));
-
-        translationsTurlish.add(new Translation(0, "Programlama Dili Bulunamıyor",
-                wordRepository.findWordByKey("programming.language.not.found").get(), turkish));
-
-        translationsTurlish.add(new Translation(0, "Programlama Dili Teknolojisi Eklendi",
-                wordRepository.findWordByKey("programming.language.technologie.added").get(), turkish));
-
-        translationsTurlish.add(new Translation(0, "Programlama Dili Teknolojisi Güncellendi",
-                wordRepository.findWordByKey("programming.language.technologie.updated").get(), turkish));
-
-        translationsTurlish.add(new Translation(0, "Programlama Dili Teknolojisi Silindi",
-                wordRepository.findWordByKey("programming.language.technologie.delete").get(), turkish));
-
-        translationsTurlish.add(new Translation(0, "Programlama Dili Teknolojisi Bulanamıyor",
-                wordRepository.findWordByKey("programming.language.technologie.not.found").get(), turkish));
 
         this.translationRepository.saveAll(translationsTurlish);
 
