@@ -1,4 +1,4 @@
-package com.biricik.devs.core.utilities.result;
+package com.biricik.devs.core.utilities;
 
 import java.util.Optional;
 
@@ -32,7 +32,7 @@ public class LanguageSelector {
 
     }
 
-    public static String languageSelector(String message) {
+    public static String selector(String message) {
         String selectedLanguage =request.getHeader("Accept-Language");
         String result = Languages.ENGLISH;
         if (selectedLanguage == null) {

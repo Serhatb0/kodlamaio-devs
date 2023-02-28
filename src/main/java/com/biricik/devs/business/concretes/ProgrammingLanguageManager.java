@@ -10,7 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.biricik.devs.business.abstracts.ProgrammingLanguageService;
-import com.biricik.devs.business.constants.Messages;
 import com.biricik.devs.business.requests.PaginatedRequest;
 import com.biricik.devs.business.requests.ProgrammingLanguageRequests.CreateProgrammingLanguageRequest;
 import com.biricik.devs.business.requests.ProgrammingLanguageRequests.UpdateProgrammingLanguageRequest;
@@ -20,12 +19,6 @@ import com.biricik.devs.business.responses.ProgrammingLanguageResponses.GetAllPr
 import com.biricik.devs.business.responses.ProgrammingLanguageResponses.GetByIdProgrammingLanguagesResponse;
 import com.biricik.devs.business.responses.ProgrammingLanguageResponses.UpdateProgrammingLanguageResponse;
 import com.biricik.devs.core.utilities.mappers.ModelMapperService;
-import com.biricik.devs.core.utilities.result.DataResult;
-import com.biricik.devs.core.utilities.result.ErrorDataResult;
-import com.biricik.devs.core.utilities.result.ErrorResult;
-import com.biricik.devs.core.utilities.result.Result;
-import com.biricik.devs.core.utilities.result.SuccessDataResult;
-import com.biricik.devs.core.utilities.result.SuccessResult;
 import com.biricik.devs.dao.abstracts.ProgrammingLanguageRepository;
 import com.biricik.devs.entities.concretes.ProgrammingLanguage;
 
@@ -43,7 +36,7 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 	}
 
 	@Override
-	public DataResult<PaginatedGenericResponse<GetAllProgrammingLanguagesResponse>> getAllProgrammingLanguage(
+	public PaginatedGenericResponse<GetAllProgrammingLanguagesResponse> getAllProgrammingLanguage(
 			PaginatedRequest paginatedRequest) {
 
 		Pageable pageable = PageRequest.of(paginatedRequest.getPage(), paginatedRequest.getSize());
@@ -56,60 +49,50 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 				.collect(Collectors.toList());
 		;
 
-		return new SuccessDataResult<>(new PaginatedGenericResponse<GetAllProgrammingLanguagesResponse>(response,
+		return new PaginatedGenericResponse<GetAllProgrammingLanguagesResponse>(response,
 				pageProgrammingLanguage.getNumber(), pageProgrammingLanguage.getSize(),
-				pageProgrammingLanguage.getTotalElements(), pageProgrammingLanguage.getTotalPages()));
+				pageProgrammingLanguage.getTotalElements(), pageProgrammingLanguage.getTotalPages());
 	}
 
 	@Override
-	public DataResult<GetByIdProgrammingLanguagesResponse> getByIdProgrammingLanguage(int id) {
-		Optional<ProgrammingLanguage> optionalProgrammingLanguage = programmingLanguageRepository.findById(id);
+	public GetByIdProgrammingLanguagesResponse getByIdProgrammingLanguage(int id) {
+		ProgrammingLanguage optionalProgrammingLanguage = programmingLanguageRepository.findById(id).get();
 
-		if (optionalProgrammingLanguage.isEmpty()) {
-			return new ErrorDataResult<>(Messages.PROGRAMMİNGLANGUAGENOTFOUND);
-		}
+
 
 		GetByIdProgrammingLanguagesResponse response = modelMapperService.forResponse().map(optionalProgrammingLanguage,
 				GetByIdProgrammingLanguagesResponse.class);
-		return new SuccessDataResult<>(response);
+		return response;
 	}
 
 	@Override
-	public DataResult<CreateProgrammingLanguageResponse> addProgrammingLanguage(
+	public CreateProgrammingLanguageResponse addProgrammingLanguage(
 			CreateProgrammingLanguageRequest createProgrammingLanguageRequest) {
 
 		ProgrammingLanguage programmingLanguage = programmingLanguageRepository
 				.save(modelMapperService.forRequest().map(createProgrammingLanguageRequest, ProgrammingLanguage.class));
 
-		return new SuccessDataResult<>(
-				modelMapperService.forResponse().map(programmingLanguage, CreateProgrammingLanguageResponse.class),
-				Messages.PROGRAMMİNGLANGUAGEADD);
+		return modelMapperService.forResponse().map(programmingLanguage, CreateProgrammingLanguageResponse.class);
 
 	}
 
 	@Override
-	public DataResult<UpdateProgrammingLanguageResponse> updateProgrammingLanguage(
+	public UpdateProgrammingLanguageResponse updateProgrammingLanguage(
 			UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest) {
 
 		ProgrammingLanguage programmingLanguage = modelMapperService.forRequest().map(updateProgrammingLanguageRequest,
 				ProgrammingLanguage.class);
 		this.programmingLanguageRepository.save(programmingLanguage);
 
-		return new SuccessDataResult<>(
-				modelMapperService.forResponse().map(programmingLanguage, UpdateProgrammingLanguageResponse.class),
-				Messages.PROGRAMMİNGLANGUAGEUPDATE);
+		return modelMapperService.forResponse().map(programmingLanguage, UpdateProgrammingLanguageResponse.class);
 
 	}
 
 	@Override
-	public Result deleteProgrammingLanguage(int id) {
+	public void deleteProgrammingLanguage(int id) {
 		Optional<ProgrammingLanguage> programmingLanguage = programmingLanguageRepository.findById(id);
-		if (programmingLanguage.isEmpty()) {
-			return new ErrorResult(Messages.PROGRAMMİNGLANGUAGENOTFOUND);
-		}
-		programmingLanguageRepository.delete(programmingLanguage.get());
 
-		return new SuccessResult(Messages.PROGRAMMİNGLANGUAGEDELETE);
+		programmingLanguageRepository.delete(programmingLanguage.get());
 
 	}
 

@@ -10,4 +10,6 @@ public interface ProgrammingLanguageTechnologieRepository extends JpaRepository<
     
 
     List<ProgrammingLanguageTechnologie> findByProgrammingLanguageId(int id);
+    
+    
 }

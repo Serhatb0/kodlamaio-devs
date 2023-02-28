@@ -1,5 +1,8 @@
 package com.biricik.devs.webApi.controllers;
 
+import javax.validation.Valid;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -7,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.biricik.devs.annotation.LogExecutionTime;
@@ -19,8 +23,6 @@ import com.biricik.devs.business.responses.ProgrammingLanguageResponses.CreatePr
 import com.biricik.devs.business.responses.ProgrammingLanguageResponses.GetAllProgrammingLanguagesResponse;
 import com.biricik.devs.business.responses.ProgrammingLanguageResponses.GetByIdProgrammingLanguagesResponse;
 import com.biricik.devs.business.responses.ProgrammingLanguageResponses.UpdateProgrammingLanguageResponse;
-import com.biricik.devs.core.utilities.result.DataResult;
-import com.biricik.devs.core.utilities.result.Result;
 
 @RestController
 @RequestMapping("/api")
@@ -34,7 +36,7 @@ public class ProgrammingLanguagesController {
 	}
 
 	@GetMapping("/programming-languages")
-	public DataResult<PaginatedGenericResponse<GetAllProgrammingLanguagesResponse>> getAllProgrammingLanguage(
+	public PaginatedGenericResponse<GetAllProgrammingLanguagesResponse> getAllProgrammingLanguage(
 			@RequestBody PaginatedRequest paginatedRequest) {
 
 		return programmingLanguageService.getAllProgrammingLanguage(paginatedRequest);
@@ -42,24 +44,25 @@ public class ProgrammingLanguagesController {
 
 	@LogExecutionTime
 	@GetMapping("/programming-languages/{id}")
-	public DataResult<GetByIdProgrammingLanguagesResponse> getByIdProgrammingLanguage(@PathVariable int id) {
+	public GetByIdProgrammingLanguagesResponse getByIdProgrammingLanguage(@PathVariable int id) {
 		return programmingLanguageService.getByIdProgrammingLanguage(id);
 	}
 
 	@DeleteMapping("/programming-languages/{id}")
-	public Result deleteProgrammingLanguage(@PathVariable int id) {
-		return programmingLanguageService.deleteProgrammingLanguage(id);
+	public void deleteProgrammingLanguage(@PathVariable int id) {
+		 programmingLanguageService.deleteProgrammingLanguage(id);
 	}
 
 	@PutMapping("/programming-languages/{id}")
-	public DataResult<UpdateProgrammingLanguageResponse> updateProgrammingLanguage(
-			@RequestBody UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest) {
+	public  UpdateProgrammingLanguageResponse updateProgrammingLanguage(
+			@RequestBody @Valid UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest) {
 		return programmingLanguageService.updateProgrammingLanguage(updateProgrammingLanguageRequest);
 	}
 
 	@PostMapping("/programming-languages")
-	public DataResult<CreateProgrammingLanguageResponse> addProgrammingLanguage(
-			@RequestBody CreateProgrammingLanguageRequest createProgrammingLanguageRequest) {
+	@ResponseStatus(code = HttpStatus.CREATED)
+	public CreateProgrammingLanguageResponse addProgrammingLanguage(
+			@RequestBody @Valid CreateProgrammingLanguageRequest createProgrammingLanguageRequest) {
 		return programmingLanguageService.addProgrammingLanguage(createProgrammingLanguageRequest);
 	}
 
