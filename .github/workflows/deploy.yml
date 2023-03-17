@@ -38,7 +38,7 @@ jobs:
         # username
         username: ${{secrets.USERNAME}}
         # your sftp server
-        server:  ${{secrets.İP}}
+        server:  ${{secrets.IP}}
         # you can copy private_key from your *.pem file, keep format
         ssh_private_key: ${{secrets.SSH}}
         # will put all file under this path
