@@ -52,6 +52,8 @@ public class ProgrammingLanguageTechnologieManager implements ProgrammingLanguag
 
 		ProgrammingLanguage programmingLanguage = programmingLanguageService
 				.findById(createProgrammingLanguageRequest.getProgrammingLanguageId());
+		
+		
 		technologie.setProgrammingLanguage(programmingLanguage);
 		technologie.setId(0);
 		ProgrammingLanguageTechnologie programmingLanguageTechnologie = this.programmingLanguageTechnologieRepository
