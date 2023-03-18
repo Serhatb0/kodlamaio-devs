@@ -50,12 +50,12 @@ jobs:
         
     - name: SSH REMOTE COMMANDS
 
-      uses: invi5H/ssh-action@v1.0.0
+      uses: appleboy/ssh-action@v0.1.8
       with:
-        SSH_USER:  ${{secrets.USERNAME}}
-        SSH_HOST: ${{secrets.IP}}
+        host:  ${{secrets.IP}}
+        username: ${{secrets.USERNAME}}
         SSH_KEY:  ${{secrets.SSH}}
-        command: |
+        script: |
           cd /home/biricikserhat47
           pkill -u biricikserhat47 'java'
           nohup java -jar -Djava.security.edg=file:/dev/./urandom devs-0.0.1-SNAPSHOT.jar &
