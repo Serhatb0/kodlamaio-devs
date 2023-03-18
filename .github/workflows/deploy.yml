@@ -49,8 +49,6 @@ jobs:
         
 
     - name: SSH REMOTE COMMANDS
-
-    
       uses: appleboy/ssh-action@v0.1.8
       with:
         host:  ${{secrets.IP}}
