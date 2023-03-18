@@ -23,4 +23,5 @@ public class PaginatedGenericResponse<T> {
 		return new PaginatedGenericResponse<T>(content, pageNumber, pageSize, totalElements, totalPages);
 	}
 
+
 }

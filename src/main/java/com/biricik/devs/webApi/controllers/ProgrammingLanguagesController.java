@@ -42,6 +42,12 @@ public class ProgrammingLanguagesController {
 		return programmingLanguageService.getAllProgrammingLanguage(paginatedRequest);
 	}
 
+	@GetMapping("/deploy")
+	public String getAllProgrammingLanguage() {
+
+		return "DEPLOYMENT";
+	}
+
 	@LogExecutionTime
 	@GetMapping("/programming-languages/{id}")
 	public GetByIdProgrammingLanguagesResponse getByIdProgrammingLanguage(@PathVariable int id) {
@@ -50,11 +56,11 @@ public class ProgrammingLanguagesController {
 
 	@DeleteMapping("/programming-languages/{id}")
 	public void deleteProgrammingLanguage(@PathVariable int id) {
-		 programmingLanguageService.deleteProgrammingLanguage(id);
+		programmingLanguageService.deleteProgrammingLanguage(id);
 	}
 
 	@PutMapping("/programming-languages/{id}")
-	public  UpdateProgrammingLanguageResponse updateProgrammingLanguage(
+	public UpdateProgrammingLanguageResponse updateProgrammingLanguage(
 			@RequestBody @Valid UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest) {
 		return programmingLanguageService.updateProgrammingLanguage(updateProgrammingLanguageRequest);
 	}
