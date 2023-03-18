@@ -51,11 +51,18 @@ jobs:
     - name: SSH REMOTE COMMANDS
 
     
-      run: |
+      uses: appleboy/ssh-action@v0.1.8
+      with:
+        host:  ${{secrets.IP}}
+        username: ${{secrets.USERNAME}}
+        key:  ${{secrets.SSH}}
+        script: |
           cd /home/biricikserhat47
           pkill -u biricikserhat47 'java'
-          nohup java -jar -Djava.security.edg=file:/dev/./urandom devs-0.0.1-SNAPSHOT.jar &
+          nohup java -jar  -Djava.security.edg=file:/dev/./urandom devs-0.0.1-SNAPSHOT.jar  > /dev/null 2>&1 &
+
         
+   
    
     
      
