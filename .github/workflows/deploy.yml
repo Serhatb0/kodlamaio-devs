@@ -45,7 +45,23 @@ jobs:
         local_path: ./target/devs-0.0.1-SNAPSHOT.jar
         # files will copy to under remote_path
         remote_path: /home/biricikserhat47
-  
+        
+    - name: SSH REMOTE COMMANDS
+    
+      uses: invi5H/ssh-action@v1.0.0
+      with:
+        SSH_USER:  ${{secrets.USERNAME}}
+        SSH_HOST: ${{secrets.IP}}
+        SSH_KEY:  ${{secrets.SSH}}
+        script: |
+          cd /home/biricikserhat47
+          pkill -u biricikserhat47 'java'
+          nohup java -jar -Djava.security.edg=file:/dev/./urandom devs-0.0.1-SNAPSHOT.jar &
+
+          
+        
+     
+
 
 
       
