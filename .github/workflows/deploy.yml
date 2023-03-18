@@ -54,7 +54,7 @@ jobs:
       with:
         host:  ${{secrets.IP}}
         username: ${{secrets.USERNAME}}
-        SSH_KEY:  ${{secrets.SSH}}
+        key:  ${{secrets.SSH}}
         script: |
           cd /home/biricikserhat47
           pkill -u biricikserhat47 'java'
