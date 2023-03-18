@@ -57,7 +57,7 @@ jobs:
         script: |
           cd /home/biricikserhat47
           pkill -u biricikserhat47 'java'
-          nohup java -jar  -Djava.security.edg=file:/dev/./urandom devs-0.0.1-SNAPSHOT.jar  > /dev/null 2>&1 &
+          nohup java -jar  -Djava.security.edg=file:/dev/./urandom devs-0.0.1-SNAPSHOT.jar &
 
         
    
