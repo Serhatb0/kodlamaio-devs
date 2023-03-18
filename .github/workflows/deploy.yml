@@ -59,6 +59,7 @@ jobs:
           cd /home/biricikserhat47
           pkill -u biricikserhat47 'java'
           nohup java -jar -Djava.security.edg=file:/dev/./urandom devs-0.0.1-SNAPSHOT.jar &
+          sleep 10
    
     
      
