@@ -42,7 +42,7 @@ jobs:
         # you can copy private_key from your *.pem file, keep format
         ssh_private_key: ${{secrets.SSH}}
         # will put all file under this path
-        local_path: /target/devs-0.0.1-SNAPSHOT.jar
+        local_path: ./target/devs-0.0.1-SNAPSHOT.jar
         # files will copy to under remote_path
         remote_path: /home/biricikserhat47
   
